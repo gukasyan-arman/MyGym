@@ -3,4 +3,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="splash_text1">Your favorite gym</string>
     <string name="splash_text2">Smart fitness</string>
+    <string name="fitness">Fitness</string>
+    <string name="boxing">Boxing</string>
+    <string name="powerlifting">Powerlifting</string>
 </resources>
