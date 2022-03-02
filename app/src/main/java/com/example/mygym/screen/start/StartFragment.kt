@@ -53,6 +53,8 @@ class StartFragment : Fragment() {
         imagesList.add(image)
     }
 
+
+    //delete or add page of pager
     private fun postToList() {
 
         for (i in 1.. NUMBER_OF_PAGER_ITEM) {

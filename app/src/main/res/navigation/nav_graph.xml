@@ -20,12 +20,33 @@
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
-            android:id="@+id/action_startFragment_to_aboutGymFragment"
-            app:destination="@id/aboutGymFragment" />
+            android:id="@+id/action_startFragment_to_powerliftingFragment"
+            app:destination="@id/powerliftingFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_boxingFragment"
+            app:destination="@id/boxingFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_fitnessFragment"
+            app:destination="@id/fitnessFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutGymFragment"
         android:name="com.example.mygym.screen.aboutgym.AboutGymFragment"
         android:label="fragment_about_gym"
         tools:layout="@layout/fragment_about_gym" />
+    <fragment
+        android:id="@+id/powerliftingFragment"
+        android:name="com.example.mygym.screen.powerlifting.PowerliftingFragment"
+        android:label="fragment_powerlifting"
+        tools:layout="@layout/fragment_powerlifting" />
+    <fragment
+        android:id="@+id/boxingFragment"
+        android:name="com.example.mygym.screen.boxing.BoxingFragment"
+        android:label="fragment_boxing"
+        tools:layout="@layout/fragment_boxing" />
+    <fragment
+        android:id="@+id/fitnessFragment"
+        android:name="com.example.mygym.screen.fitness.FitnessFragment"
+        android:label="fragment_fitness"
+        tools:layout="@layout/fragment_fitness" />
 </navigation>

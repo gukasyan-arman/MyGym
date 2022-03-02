@@ -8,8 +8,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.mygym.NUMBER_OF_PAGER_ITEM
 import com.example.mygym.R
 
 class ViewPagerAdapter(
@@ -25,6 +28,11 @@ class ViewPagerAdapter(
                 val position = adapterPosition
                 Toast.makeText(itemView.context,
                     "You clicked on item = #${position + 1}", Toast.LENGTH_SHORT).show()
+                when (position) {
+                    0 -> Navigation.findNavController(it).navigate(R.id.action_startFragment_to_powerliftingFragment)
+                    1 -> Navigation.findNavController(it).navigate(R.id.action_startFragment_to_boxingFragment)
+                    2 -> Navigation.findNavController(it).navigate(R.id.action_startFragment_to_fitnessFragment)
+                }
             }
         }
     }
@@ -42,6 +50,6 @@ class ViewPagerAdapter(
         holder.itemImage.setImageResource(images[position])
     }
 
-    override fun getItemCount() = titles.size
+    override fun getItemCount() = NUMBER_OF_PAGER_ITEM
 
 }

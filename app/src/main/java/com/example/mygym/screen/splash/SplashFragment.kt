@@ -26,7 +26,7 @@ class SplashFragment : Fragment() {
         binding = FragmentSplashBinding.inflate(layoutInflater, container, false)
 
         CoroutineScope(Dispatchers.Main).launch {
-            delay(1000)
+            delay(3000)
             Navigation.findNavController(view!!).navigate(R.id.action_splashFragment_to_startFragment)
         }
 
