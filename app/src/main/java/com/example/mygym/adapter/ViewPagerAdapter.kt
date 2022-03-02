@@ -12,19 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.mygym.R
 
-//class ViewPagerAdapter(
-//    private val items: ArrayList<Fragment>,
-//    activity: AppCompatActivity
-//): FragmentStateAdapter(activity) {
-//    override fun getItemCount(): Int {
-//        return items.size
-//    }
-//
-//    override fun createFragment(position: Int): Fragment {
-//        return items[position]
-//    }
-//}
-
 class ViewPagerAdapter(
     private var titles: List<String>,
     private var images: List<Int>): RecyclerView.Adapter<ViewPagerAdapter.Pager2ViewHolder>() {

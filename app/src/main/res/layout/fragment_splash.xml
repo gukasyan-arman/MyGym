@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screen.splash.SplashFragment">
+    tools:context=".screen.splash.SplashFragment"
+    android:background="@color/splash_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,23 +15,22 @@
             android:id="@+id/splashText2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="80dp"
             android:fontFamily="@font/aleo_bold"
             android:gravity="center"
             android:text="@string/splash_text1"
-            android:textColor="@color/black"
+            android:textColor="@color/splash_logo"
             android:textSize="42sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/splash"
+            android:src="@drawable/gym_logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -45,7 +45,7 @@
             android:fontFamily="@font/aleo_bold"
             android:gravity="center"
             android:text="@string/splash_text2"
-            android:textColor="@color/black"
+            android:textColor="@color/splash_logo"
             android:textSize="42sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

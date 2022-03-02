@@ -39,17 +39,6 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val viewPager: ViewPager2 = requireActivity().findViewById(R.id.startViewPager)
-//
-//        val fragments: ArrayList<Fragment> = arrayListOf(
-//            PagerItemFragment(),
-//            PagerItem2Fragment(),
-//            PagerItem3Fragment()
-//        )
-//
-//        val adapter = ViewPagerAdapter(fragments, requireActivity() as AppCompatActivity)
-//        viewPager.adapter = adapter
-
         postToList()
 
         startViewPager.adapter = ViewPagerAdapter(titlesList, imagesList)
@@ -65,8 +54,14 @@ class StartFragment : Fragment() {
     }
 
     private fun postToList() {
+
         for (i in 1.. NUMBER_OF_PAGER_ITEM) {
-            addToList("Title $i", R.drawable.man_powerlift)
+            when (i) {
+                1 -> addToList("powerlifting", R.drawable.man_powerlift)
+                2 -> addToList("boxing", R.drawable.boxing)
+                3 -> addToList("fitness", R.drawable.woman_fitness)
+            }
+//            addToList("Title $i", R.drawable.man_powerlift)
         }
     }
 
