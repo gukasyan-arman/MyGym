@@ -1,15 +1,12 @@
 package com.example.mygym.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mygym.NUMBER_OF_PAGER_ITEM
 import com.example.mygym.R
 
 class ViewPagerAdapter(
@@ -22,11 +19,7 @@ class ViewPagerAdapter(
 
         init {
             itemImage.setOnClickListener {
-                val position = adapterPosition
-                Toast.makeText(itemView.context,
-                    "You clicked on item = #${position + 1}", Toast.LENGTH_SHORT).show()
-                Log.i("kolvo", titles.size.toString())
-                when (position) {
+                when (adapterPosition) {
                     0 -> Navigation.findNavController(it).navigate(R.id.action_startFragment_to_powerliftingFragment)
                     1 -> Navigation.findNavController(it).navigate(R.id.action_startFragment_to_boxingFragment)
                     2 -> Navigation.findNavController(it).navigate(R.id.action_startFragment_to_fitnessFragment)

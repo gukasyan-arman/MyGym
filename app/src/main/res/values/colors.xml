@@ -9,6 +9,8 @@
     <color name="main_medium_dark">#201F1F</color>
     <color name="main_deep_dark">#191818</color>
     <color name="splash_background">#16142a</color>
+    <color name="background_btn">#262347</color>
     <color name="splash_logo">#d31531</color>
+    <color name="sbd_red">#e30e21</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

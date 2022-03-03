@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_startFragment_to_fitnessFragment"
             app:destination="@id/fitnessFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_aboutGymFragment"
+            app:destination="@id/aboutGymFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutGymFragment"

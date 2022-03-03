@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import com.example.mygym.NUMBER_OF_PAGER_ITEM
 import com.example.mygym.R
 import com.example.mygym.adapter.ViewPagerAdapter
@@ -38,6 +39,18 @@ class StartFragment : Fragment() {
 
         val indicator: CircleIndicator3 = view.findViewById(R.id.indicator)
         indicator.setViewPager(startViewPager)
+
+        binding.startFragmentAboutButton.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_startFragment_to_aboutGymFragment)
+        }
+
+        binding.startFragmentJoinButton.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_startFragment_to_aboutGymFragment)
+        }
+
+        binding.startFragmentTableButton.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_startFragment_to_aboutGymFragment)
+        }
 
     }
 
