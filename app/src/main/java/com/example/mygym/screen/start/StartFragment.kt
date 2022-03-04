@@ -18,8 +18,8 @@ import me.relex.circleindicator.CircleIndicator3
 class StartFragment : Fragment() {
 
     lateinit var binding: FragmentStartBinding
-    private var titlesList = mutableListOf<String>()
     private var imagesList = mutableListOf<Int>()
+    private var titlesList = mutableListOf<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

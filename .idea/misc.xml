@@ -17,6 +17,7 @@
         <entry key="app/src/main/res/layout/fragment_powerlifting.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.14" />
         <entry key="app/src/main/res/layout/fragment_start.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/gym_photos_pager_item.xml" value="0.1" />
       </map>
     </option>
   </component>
