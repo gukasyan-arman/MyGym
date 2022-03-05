@@ -1,11 +1,18 @@
 package com.example.mygym.screen.aboutgym
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mygym.GYM_EMAIL
 import com.example.mygym.R
 import com.example.mygym.adapter.ViewPagerImageAdapter
 import com.example.mygym.databinding.FragmentAboutGymBinding
@@ -15,7 +22,7 @@ import me.relex.circleindicator.CircleIndicator3
 
 class AboutGymFragment : Fragment() {
 
-    lateinit var binding: FragmentAboutGymBinding
+    private lateinit var binding: FragmentAboutGymBinding
     private var imagesList = mutableListOf<Int>()
 
     override fun onCreateView(
@@ -36,6 +43,35 @@ class AboutGymFragment : Fragment() {
 
         val indicator: CircleIndicator3 = view.findViewById(R.id.indicator)
         indicator.setViewPager(imageViewPager)
+
+        binding.emailLinearLayout.setOnClickListener {
+            val packageManager: PackageManager = requireActivity().packageManager
+            val intent = Intent(Intent.ACTION_SENDTO).apply {
+                data = Uri.parse("mailto:$GYM_EMAIL") // only email apps should handle this
+                putExtra(Intent.EXTRA_EMAIL, GYM_EMAIL)
+            }
+            if (intent.resolveActivity(packageManager) != null) {
+                startActivity(intent)
+            }
+        }
+
+        binding.teamLinearLayout.setOnClickListener {
+            Toast.makeText(requireContext(), "Инструкторы", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.tableLinearLayout.setOnClickListener {
+            Toast.makeText(requireContext(), "Расписание", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.phoneButton.setOnClickListener {
+            try {
+                val callIntent = Intent(Intent.ACTION_DIAL)
+                callIntent.data = Uri.parse("tel:+79613089885")
+                        startActivity(callIntent)
+            } catch (activityException: ActivityNotFoundException) {
+                Log.e("Calling a Phone Number", "Call failed")
+            }
+        }
 
     }
 

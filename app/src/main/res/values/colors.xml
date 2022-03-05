@@ -13,4 +13,5 @@
     <color name="splash_logo">#d31531</color>
     <color name="sbd_red">#e30e21</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#888686</color>
 </resources>

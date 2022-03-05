@@ -4,10 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/button.xml" value="0.16597222222222222" />
+        <entry key="app/src/main/res/drawable/ic_account_group_outline.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_stars_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_clock_time_five_outline.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_email_edit_outline.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_file_table_box_outline.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_phone.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10714285714285714" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_about_gym.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_about_gym.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_boxing.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_fitness.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_maps.xml" value="0.10621584699453553" />
