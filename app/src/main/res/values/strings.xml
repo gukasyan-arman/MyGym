@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">MyGym</string>
     <string name="gym_address">Пр-кт Стачки 199, 4 этаж</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -17,8 +17,8 @@
     <string name="start_about_btn_text">О клубе</string>
     <string name="start_join_btn_text">Присоединиться</string>
     <string name="title_activity_maps">MapsActivity</string>
-    <string name="gym_working_hous">Пн-Вс: 07:00 - 23:00</string>
+    <string name="gym_working_hous" tools:ignore="TypographyDashes">Пн-Вс: 07:00 - 23:00</string>
     <string name="gym_table">Расписание</string>
     <string name="gym_team">Инструкторы</string>
-    <string name="send_email">Напишите нам на поту</string>
+    <string name="send_email">Напишите нам на почту</string>
 </resources>

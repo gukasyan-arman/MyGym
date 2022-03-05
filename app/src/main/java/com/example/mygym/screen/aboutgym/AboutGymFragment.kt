@@ -12,11 +12,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mygym.GYM_EMAIL
-import com.example.mygym.R
+import com.example.mygym.*
 import com.example.mygym.adapter.ViewPagerImageAdapter
 import com.example.mygym.databinding.FragmentAboutGymBinding
-import com.example.mygym.showActionBar
 import kotlinx.android.synthetic.main.fragment_about_gym.*
 import me.relex.circleindicator.CircleIndicator3
 
@@ -71,6 +69,32 @@ class AboutGymFragment : Fragment() {
             } catch (activityException: ActivityNotFoundException) {
                 Log.e("Calling a Phone Number", "Call failed")
             }
+        }
+
+        binding.shareButton.setOnClickListener {
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, GYM_SHARE_TEXT)
+                type = "text/plain"
+            }
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
+        }
+
+        binding.goToInstButton.setOnClickListener {
+            val launchBrowser = Intent(Intent.ACTION_VIEW, Uri.parse(GYM_INST))
+            startActivity(launchBrowser)
+        }
+
+        binding.goToVkButton.setOnClickListener {
+            val launchBrowser = Intent(Intent.ACTION_VIEW, Uri.parse(GYM_VK))
+            startActivity(launchBrowser)
+        }
+
+        binding.goToWebsiteButton.setOnClickListener {
+            val launchBrowser = Intent(Intent.ACTION_VIEW, Uri.parse(GYM_WEBSITE))
+            startActivity(launchBrowser)
         }
 
     }
