@@ -17,23 +17,27 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 class MapsFragment : Fragment() {
 
-    private val callback = OnMapReadyCallback { googleMap ->
-        val westGym = LatLng(47.22959987585713, 39.62825449809063)
-        googleMap.addMarker(MarkerOptions().position(westGym).title("Marker in westGym"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(westGym))
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_maps, container, false)
+        val view = inflater.inflate(R.layout.fragment_maps, container, false)
+
+        val callback = OnMapReadyCallback { googleMap ->
+            val westGym = LatLng(47.22959987585713, 39.62825449809063)
+            googleMap.addMarker(MarkerOptions().position(westGym).title("Marker in westGym"))
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(westGym))
+        }
+
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+        mapFragment?.getMapAsync(callback)
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(callback)
+
     }
 }

@@ -15,13 +15,21 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.mygym.*
 import com.example.mygym.adapter.ViewPagerImageAdapter
 import com.example.mygym.databinding.FragmentAboutGymBinding
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapFragment
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_about_gym.*
 import me.relex.circleindicator.CircleIndicator3
 
-class AboutGymFragment : Fragment() {
+class AboutGymFragment : Fragment(), OnMapReadyCallback {
 
     private lateinit var binding: FragmentAboutGymBinding
     private var imagesList = mutableListOf<Int>()
+    val mapsFragment: MapsFragment = MapsFragment()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -97,6 +105,8 @@ class AboutGymFragment : Fragment() {
             startActivity(launchBrowser)
         }
 
+        parentFragmentManager.beginTransaction().   replace(R.id.frameLayout, mapsFragment).commit()
+
     }
 
     private fun addToList(image: Int) {
@@ -121,6 +131,12 @@ class AboutGymFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         imagesList.clear()
+    }
+
+    override fun onMapReady(p0: GoogleMap) {
+        p0.addMarker(MarkerOptions()
+            .position(LatLng(47.229505163672684, 39.628286684591885))
+            .title("WestGym"))
     }
 
 }
