@@ -19,7 +19,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10714285714285714" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_about_gym.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_about_gym.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_boxing.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_fitness.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_maps.xml" value="0.10621584699453553" />
@@ -27,6 +27,7 @@
         <entry key="app/src/main/res/layout/fragment_pager_item2.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_pager_item3.xml" value="0.11" />
         <entry key="app/src/main/res/layout/fragment_powerlifting.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_rules.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.14" />
         <entry key="app/src/main/res/layout/fragment_start.xml" value="0.18" />
         <entry key="app/src/main/res/layout/gym_photos_pager_item.xml" value="0.1" />
