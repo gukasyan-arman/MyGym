@@ -28,7 +28,6 @@ class MapsFragment : Fragment() {
             val westGym = LatLng(47.22955616256058, 39.62825449809063)
             googleMap.addMarker(MarkerOptions().position(westGym).title("Marker in westGym"))
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(westGym))
-            googleMap.animateCamera(CameraUpdateFactory.zoomTo(12F))
         }
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?

@@ -9,13 +9,26 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyGym"
-        android:fullBackupContent="true">
+        android:theme="@style/Theme.MyGym">
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".screen.splash.SplashActivity"
+            android:exported="true"
+            tools:ignore="LockedOrientationActivity">
 
+            <intent-filter>
+
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+
+        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -27,16 +40,19 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.LAUNCHER" />
+
+
                 <action android:name="android.intent.action.SENDTO" />
+
                 <data android:scheme="mailto" />
             </intent-filter>
         </activity>

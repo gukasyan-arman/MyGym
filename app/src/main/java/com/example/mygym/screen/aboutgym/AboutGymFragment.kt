@@ -105,7 +105,7 @@ class AboutGymFragment : Fragment(), OnMapReadyCallback {
             startActivity(launchBrowser)
         }
 
-        parentFragmentManager.beginTransaction().   replace(R.id.frameLayout, mapsFragment).commit()
+        parentFragmentManager.beginTransaction().replace(R.id.frameLayout, mapsFragment).commit()
 
     }
 
