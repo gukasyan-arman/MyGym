@@ -21,5 +21,15 @@
     <string name="gym_table">Расписание</string>
     <string name="gym_team">Инструкторы</string>
     <string name="send_email">Напишите нам на почту</string>
-    <string name="rules">бла бла бла правила посещения зала</string>
+    <string name="rules" tools:ignore="Typos">бла бла бла правила посещения зала</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="home_item_text">Главная страница</string>
+    <string name="team_item_text">Инструкторы</string>
+    <string name="abot_gym_item_text">О клубе</string>
+    <string name="rules_item_text">Правила посещения</string>
+    <string name="about_app_item_text">О приложении</string>
+    <string name="feedback_item_text">Обратная связь</string>
+
 </resources>

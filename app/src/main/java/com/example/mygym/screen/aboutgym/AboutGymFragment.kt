@@ -11,14 +11,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.example.mygym.*
 import com.example.mygym.adapter.ViewPagerImageAdapter
 import com.example.mygym.databinding.FragmentAboutGymBinding
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapFragment
 import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_about_gym.*
@@ -35,7 +32,7 @@ class AboutGymFragment : Fragment(), OnMapReadyCallback {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        showActionBar(requireActivity() as AppCompatActivity)
+        activity?.actionBar?.title = "О зале"
         binding = FragmentAboutGymBinding.inflate(inflater, container, false)
         return binding.root
     }

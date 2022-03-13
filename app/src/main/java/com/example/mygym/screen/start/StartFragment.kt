@@ -5,13 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
+import com.example.mygym.MainActivity
 import com.example.mygym.NUMBER_OF_PAGER_ITEM
 import com.example.mygym.R
 import com.example.mygym.adapter.ViewPagerAdapter
 import com.example.mygym.databinding.FragmentStartBinding
-import com.example.mygym.showActionBar
 import kotlinx.android.synthetic.main.fragment_start.*
 import me.relex.circleindicator.CircleIndicator3
 
@@ -25,7 +24,7 @@ class StartFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        showActionBar(requireActivity() as AppCompatActivity)
+        activity?.actionBar?.title = "Главная страница"
         binding = FragmentStartBinding.inflate(inflater, container, false)
         return binding.root
     }

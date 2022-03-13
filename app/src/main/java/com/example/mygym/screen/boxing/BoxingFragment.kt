@@ -5,11 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import com.example.mygym.R
 import com.example.mygym.adapter.ViewPagerImageAdapter
 import com.example.mygym.databinding.FragmentBoxingBinding
-import com.example.mygym.showActionBar
 import kotlinx.android.synthetic.main.fragment_about_gym.*
 import me.relex.circleindicator.CircleIndicator3
 
@@ -22,7 +20,6 @@ class BoxingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        showActionBar(requireActivity() as AppCompatActivity)
         binding = FragmentBoxingBinding.inflate(inflater, container, false)
         return binding.root
     }
