@@ -10,6 +10,11 @@
             android:title="@string/home_item_text"
             android:checked="true" />
         <item
+            android:id="@+id/personal_area_item"
+            android:icon="@drawable/ic_baseline_login_24"
+            android:title="@string/personal_area_text"
+            android:checked="true" />
+        <item
             android:id="@+id/team_item"
             android:icon="@drawable/ic_account_group_outline"
             android:title="@string/team_item_text" />

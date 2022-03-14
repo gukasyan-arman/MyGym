@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.mygym.screen.rules.RulesFragment
 import com.example.mygym.screen.aboutgym.AboutGymFragment
+import com.example.mygym.screen.personalarea.AuthFragment
 import com.example.mygym.screen.start.StartFragment
 import java.lang.Exception
 
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity() {
             R.id.home_item -> StartFragment::class.java
             R.id.about_item -> AboutGymFragment::class.java
             R.id.rules_item -> RulesFragment::class.java
-            R.id.about_app_item -> RulesFragment::class.java
+            R.id.personal_area_item -> AuthFragment::class.java
             else -> {StartFragment::class.java}
         }
         try {
@@ -95,6 +96,7 @@ class MainActivity : AppCompatActivity() {
         if (fragment != null) {
             fragmentManager.beginTransaction()
                 .replace(R.id.nav_fragment, fragment)
+                .addToBackStack(null)
                 .commit()
         }
 

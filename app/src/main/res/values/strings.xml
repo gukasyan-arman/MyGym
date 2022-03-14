@@ -31,5 +31,10 @@
     <string name="rules_item_text">Правила посещения</string>
     <string name="about_app_item_text">О приложении</string>
     <string name="feedback_item_text">Обратная связь</string>
+    <string name="personal_area_text">Личный кабинет</string>
+    <string name="get_sms_code_text_btn">получить sms-код</string>
+    <string name="verify_sms_code_text_btn">Подтвердить код</string>
+    <string name="auth_text">Для доступа к разделу введите номер телефона. Вам будет выслан SMS-код для входа.</string>
+    <string name="accept_text">Ознакомлен с правилами, согласен на обработку персональных данных</string>
 
 </resources>
