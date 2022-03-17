@@ -2,30 +2,44 @@ package com.example.mygym
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.navigation.NavigationView
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.mygym.databinding.ActivityMainBinding
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.mygym.screen.rules.RulesFragment
 import com.example.mygym.screen.aboutgym.AboutGymFragment
 import com.example.mygym.screen.personalarea.AuthFragment
+import com.example.mygym.screen.personalarea.PersonalAreaFragment
 import com.example.mygym.screen.start.StartFragment
-import java.lang.Exception
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mDrawer: DrawerLayout
     private lateinit var toolbar: Toolbar
-    private lateinit var  nvDrawer: NavigationView
+    private lateinit var nvDrawer: NavigationView
     private lateinit var drawerToggle: ActionBarDrawerToggle
     private lateinit var binding: ActivityMainBinding
+    private val currentUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (currentUser != null) {
+            Toast.makeText(this, currentUser.phoneNumber, Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this, "Юзер не зареган", Toast.LENGTH_LONG).show()
+        }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -51,8 +65,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupDrawerToggle(): ActionBarDrawerToggle {
-        // NOTE: Make sure you pass in a valid toolbar reference.  ActionBarDrawToggle() does not require it
-        // and will not render the hamburger icon without it.
         return ActionBarDrawerToggle(
             this,
             mDrawer,
@@ -69,43 +81,121 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupDrawerContent(navigationView: NavigationView) {
-        navigationView.setNavigationItemSelectedListener { menuItem ->
-            selectDrawerItem(menuItem)
+        navigationView.setNavigationItemSelectedListener {
+
+            it.isChecked = true
+
+//            if (it.itemId == R.id.personal_area_item) {
+//                if (currentUser != null) {
+//                    replaceFragment(PersonalAreaFragment(), it.title.toString())
+//                    Toast.makeText(this, "Пользователь зареган, идем в личный кабинет", Toast.LENGTH_LONG).show()
+//
+//                } else {
+//                    replaceFragment(AuthFragment(), it.title.toString())
+//                    Toast.makeText(this, "Пользователь не зареган, идем в регистрацию", Toast.LENGTH_LONG).show()
+//                }
+//            }
+//
+//            when(it.itemId){
+//                R.id.home_item -> replaceFragment(StartFragment(), it.title.toString())
+//                R.id.personal_area_item -> replaceFragment(PersonalAreaFragment(), it.title.toString())
+//                R.id.rules_item -> replaceFragment(RulesFragment(), it.title.toString())
+//                R.id.about_item -> replaceFragment(AboutGymFragment(), it.title.toString())
+//                //R.id.personal_area_item -> replaceFragment(PersonalAreaFragment(), it.title.toString())
+//                else -> {replaceFragment(StartFragment(), it.title.toString())}
+//            }
+
+            if (currentUser != null) {
+                when (it.itemId){
+                R.id.home_item -> replaceFragment(StartFragment(), it.title.toString())
+                R.id.personal_area_item -> replaceFragment(PersonalAreaFragment(), it.title.toString())
+                R.id.rules_item -> replaceFragment(RulesFragment(), it.title.toString())
+                R.id.about_item -> replaceFragment(AboutGymFragment(), it.title.toString())
+                else -> {replaceFragment(StartFragment(), it.title.toString())}
+                }
+            } else {
+                when (it.itemId){
+                    R.id.home_item -> replaceFragment(StartFragment(), it.title.toString())
+                    R.id.personal_area_item -> replaceFragment(AuthFragment(), it.title.toString())
+                    R.id.rules_item -> replaceFragment(RulesFragment(), it.title.toString())
+                    R.id.about_item -> replaceFragment(AboutGymFragment(), it.title.toString())
+                    else -> {replaceFragment(StartFragment(), it.title.toString())}
+                }
+            }
+
             true
+
         }
     }
 
-    private fun selectDrawerItem(menuItem: MenuItem) {
-        // Create a new fragment and specify the fragment to show based on nav item clicked
-        var fragment: Fragment? = null
-        val fragmentClass: Class<*> = when (menuItem.itemId) {
-            R.id.home_item -> StartFragment::class.java
-            R.id.about_item -> AboutGymFragment::class.java
-            R.id.rules_item -> RulesFragment::class.java
-            R.id.personal_area_item -> AuthFragment::class.java
-            else -> {StartFragment::class.java}
-        }
-        try {
-            fragment = fragmentClass.newInstance() as Fragment
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+//    private fun selectDrawerItem(menuItem: MenuItem) {
+//        navigationView.setNavigationItemSelectedListener {
+//            when(it.itemId){
+//                R.id.home_item -> replaceFragment(StartFragment(), it.title.toString())
+//                R.id.personal_area_item -> replaceFragment(AuthFragment(), it.title.toString())
+//                R.id.rules_item -> replaceFragment(RulesFragment(), it.title.toString())
+//                else -> {replaceFragment(StartFragment(), it.title.toString())}
+//            }
+//        }
+//        try {
+//            fragment = fragmentClass.newInstance() as Fragment
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//        }
+//
+//        // Insert the fragment by replacing any existing fragment
+//        val fragmentManager: FragmentManager = supportFragmentManager
+//        if (fragment != null) {
+//            fragmentManager.beginTransaction()
+//                .replace(R.id.nav_fragment, fragment)
+//                .addToBackStack(null)
+//                .commit()
+//        }
+//
+//        // Highlight the selected item has been done by NavigationView
+//        menuItem.isChecked = true
+//        // Set action bar title
+//        title = menuItem.title
+//        // Close the navigation drawer
+//        mDrawer.closeDrawers()
+//    }
 
-        // Insert the fragment by replacing any existing fragment
-        val fragmentManager: FragmentManager = supportFragmentManager
-        if (fragment != null) {
-            fragmentManager.beginTransaction()
-                .replace(R.id.nav_fragment, fragment)
-                .addToBackStack(null)
-                .commit()
-        }
+    private fun replaceFragment(fragment: Fragment, title: String): Boolean {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.nav_fragment, fragment)
+        fragmentTransaction.commit()
+        binding.drawerLayout.closeDrawers()
+        setTitle(title)
+        return true
+    }
 
-        // Highlight the selected item has been done by NavigationView
-        menuItem.isChecked = true
-        // Set action bar title
-        title = menuItem.title
-        // Close the navigation drawer
-        mDrawer.closeDrawers()
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("ActivityLifecycle", "onDestroy")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("ActivityLifecycle", "onResume")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("ActivityLifecycle", "onStart")
+
+
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("ActivityLifecycle", "onStop")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("ActivityLifecycle", "onPause")
     }
 
 }

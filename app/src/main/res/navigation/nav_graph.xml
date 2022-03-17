@@ -43,4 +43,31 @@
         android:name="com.example.mygym.screen.fitness.FitnessFragment"
         android:label="fragment_fitness"
         tools:layout="@layout/fragment_fitness" />
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.example.mygym.screen.personalarea.AuthFragment"
+        android:label="fragment_auth"
+        tools:layout="@layout/fragment_auth" >
+        <action
+            android:id="@+id/action_authFragment_to_personalAreaFragment"
+            app:destination="@id/personalAreaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalAreaFragment"
+        android:name="com.example.mygym.screen.personalarea.PersonalAreaFragment"
+        android:label="fragment_personal_area"
+        tools:layout="@layout/fragment_personal_area" >
+        <action
+            android:id="@+id/action_personalAreaFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+    </fragment>
+
+    <action android:id="@+id/action_global_startFragment"
+        app:destination="@id/startFragment"/>
+
+    <action android:id="@+id/action_global_authFragment"
+        app:destination="@id/authFragment"/>
+
+    <action android:id="@+id/action_global_personalAreaFragment"
+        app:destination="@id/personalAreaFragment"/>
 </navigation>
