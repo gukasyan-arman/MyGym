@@ -36,5 +36,8 @@
     <string name="verify_sms_code_text_btn">Подтвердить код</string>
     <string name="auth_text">Для доступа к разделу введите номер телефона. Вам будет выслан SMS-код для входа.</string>
     <string name="accept_text">Ознакомлен с правилами, согласен на обработку персональных данных</string>
+    <string name="phone_hint">(900)–000 0000</string>
+    <string name="otp_hint">123456</string>
+    <string name="ru_region_phone_number">+7</string>
 
 </resources>

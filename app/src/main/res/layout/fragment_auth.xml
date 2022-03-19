@@ -9,17 +9,31 @@
     android:padding="10dp"
     tools:context=".screen.personalarea.AuthFragment">
 
+        <TextView
+            android:id="@+id/phoneRuTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/ru_region_phone_number"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/phoneTextInputLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/phoneTextInputLayout" />
+
         <Button
             android:id="@+id/buttonVerify"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-
             android:layout_marginStart="40dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="40dp"
             android:background="@drawable/button"
             android:text="@string/verify_sms_code_text_btn"
             android:textAllCaps="true"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,10 +44,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="40dp"
             android:background="@drawable/button"
-            android:enabled="false"
+            android:enabled="true"
             android:text="@string/get_sms_code_text_btn"
             android:textAllCaps="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,8 +59,8 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="ololo"
+            android:layout_marginTop="24dp"
+            android:text="@string/auth_text"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24sp"
@@ -54,50 +68,111 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/phoneEditText"
-            android:layout_width="match_parent"
+<!--        <EditText-->
+<!--            android:id="@+id/phoneEditText"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="20dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:hint="900-000 0000"-->
+<!--            android:maxLength="10"-->
+<!--            android:inputType="phone"-->
+<!--            android:minHeight="48dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textColorHint="@color/gray"-->
+<!--            app:keep_hint="true"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView" />-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phoneTextInputLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:hint="+79525727392"
-            android:inputType="phone"
-            android:minHeight="48dp"
-            android:textColor="@color/white"
+            android:hint="@string/phone_hint"
             android:textColorHint="@color/gray"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:counterTextColor="@color/white"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintStart_toEndOf="@+id/phoneRuTextView"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
 
-        <EditText
-            android:id="@+id/otpEditText"
-            android:layout_width="match_parent"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phoneEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:minHeight="48dp"
+                    android:textColor="@color/white" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/otpTextInputLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:hint="1234"
-            android:inputType="number"
+            android:hint="@string/otp_hint"
             android:minHeight="48dp"
-            android:textColor="@color/white"
             android:textColorHint="@color/gray"
+            android:visibility="gone"
+            app:counterEnabled="true"
+            app:counterMaxLength="6"
+            app:counterTextColor="@color/white"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phoneEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/phoneTextInputLayout">
 
-        <RadioButton
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/otpEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:minHeight="48dp"
+                    android:textColor="@color/white" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+<!--        <EditText-->
+<!--            android:id="@+id/otpEditText"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:hint="@string/otp_hint"-->
+<!--            android:inputType="number"-->
+<!--            android:maxLength="6"-->
+<!--            android:minHeight="48dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textColorHint="@color/gray"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/phoneEditText" />-->
+
+        <CheckBox
             android:id="@+id/acceptRules"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:checked="false"
             android:minHeight="48dp"
             android:text="@string/accept_text"
             android:textColor="@color/white"
             android:theme="@style/MyRadioButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/otpEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/otpTextInputLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
