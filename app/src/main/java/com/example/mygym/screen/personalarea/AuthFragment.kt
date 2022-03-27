@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.mygym.R
 import com.example.mygym.databinding.FragmentAuthBinding
@@ -19,6 +20,8 @@ import java.util.concurrent.TimeUnit
 
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class AuthFragment : Fragment() {
 
@@ -27,6 +30,7 @@ class AuthFragment : Fragment() {
     private var verificationId: String = ""
     private lateinit var phoneNumber: String
     private val ruRegionNumber = "+7"
+    private val userModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -92,9 +96,10 @@ class AuthFragment : Fragment() {
 
     private fun signInByCredentials(credential: PhoneAuthCredential) {
         val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-        firebaseAuth .signInWithCredential(credential).addOnCompleteListener {
+        firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful){
                 Toast.makeText(requireContext(), "Login successful", Toast.LENGTH_SHORT).show()
+                userModel.user.value = FirebaseAuth.getInstance().currentUser
                 Navigation.findNavController(view!!).navigate(R.id.action_global_personalAreaFragment)
             }
         }

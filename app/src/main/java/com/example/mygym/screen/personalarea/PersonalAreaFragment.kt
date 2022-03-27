@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.mygym.R
 import com.example.mygym.databinding.FragmentPersonalAreaBinding
@@ -18,6 +20,7 @@ class PersonalAreaFragment : Fragment() {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     lateinit var binding: FragmentPersonalAreaBinding
     private val currentUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+    private val userModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,11 +38,13 @@ class PersonalAreaFragment : Fragment() {
         val currentUserNumber = currentUser?.phoneNumber
 
         binding.welcomeTv.text = "Добро пожаловать\n$currentUserNumber"
+        binding.phoneTv.text = currentUserNumber
 
         binding.logoutBtn.setOnClickListener {
             auth.signOut()
             Toast.makeText(requireContext(), "Выход выполнен", Toast.LENGTH_LONG).show()
-//            Navigation.findNavController(view).navigate(R.id.action_personalAreaFragment_to_startFragment)
+            userModel.user.value = FirebaseAuth.getInstance().currentUser
+            Navigation.findNavController(view).navigate(R.id.action_personalAreaFragment_to_startFragment)
         }
 
     }

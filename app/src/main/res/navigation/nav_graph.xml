@@ -70,4 +70,16 @@
 
     <action android:id="@+id/action_global_personalAreaFragment"
         app:destination="@id/personalAreaFragment"/>
+
+    <action android:id="@+id/action_global_rulesFragment"
+        app:destination="@id/rulesFragment"/>
+
+    <action android:id="@+id/action_global_aboutGymFragment"
+        app:destination="@id/aboutGymFragment"/>
+
+    <fragment
+        android:id="@+id/rulesFragment"
+        android:name="com.example.mygym.screen.rules.RulesFragment"
+        android:label="fragment_rules"
+        tools:layout="@layout/fragment_rules" />
 </navigation>

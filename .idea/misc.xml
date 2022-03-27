@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/button.xml" value="0.16597222222222222" />
         <entry key="app/src/main/res/drawable/ic_account_group_outline.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_share_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_stars_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_clock_time_five_outline.xml" value="0.1" />
@@ -16,18 +17,19 @@
         <entry key="app/src/main/res/drawable/ic_phone.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_vk_svgrepo_com.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/insta_btn.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.14213197969543148" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_about_gym.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_boxing.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_edit_personal_data.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_fitness.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_maps.xml" value="0.10621584699453553" />
         <entry key="app/src/main/res/layout/fragment_pager_item.xml" value="0.14" />
         <entry key="app/src/main/res/layout/fragment_pager_item2.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_pager_item3.xml" value="0.11" />
-        <entry key="app/src/main/res/layout/fragment_personal_area.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/fragment_personal_area.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_powerlifting.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_rules.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.14" />
