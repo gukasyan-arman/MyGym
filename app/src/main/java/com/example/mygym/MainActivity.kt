@@ -1,5 +1,6 @@
 package com.example.mygym
 
+import android.content.ClipData
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,10 +13,12 @@ import com.google.android.material.navigation.NavigationView
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.mygym.databinding.ActivityMainBinding
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.example.mygym.screen.rules.RulesFragment
 import com.example.mygym.screen.aboutgym.AboutGymFragment
@@ -23,16 +26,15 @@ import com.example.mygym.screen.personalarea.AuthFragment
 import com.example.mygym.screen.personalarea.PersonalAreaFragment
 import com.example.mygym.screen.personalarea.UserViewModel
 import com.example.mygym.screen.start.StartFragment
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mDrawer: DrawerLayout
-    private lateinit var toolbar: Toolbar
-    private lateinit var nvDrawer: NavigationView
-    private lateinit var drawerToggle: ActionBarDrawerToggle
     private lateinit var binding: ActivityMainBinding
+    private lateinit var appBarConfiguration: AppBarConfiguration
     private var currentUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
     private val userModel: UserViewModel by viewModels()
 
@@ -53,78 +55,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        toolbar = findViewById(R.id.toolbar)
+        val toolbar = binding.topAppBar
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        mDrawer = findViewById(R.id.drawerLayout)
-        drawerToggle = setupDrawerToggle()
-        drawerToggle.isDrawerIndicatorEnabled = true
-        drawerToggle.syncState()
-
-        // Tie DrawerLayout events to the ActionBarToggle
-        mDrawer.addDrawerListener(drawerToggle)
-
-        nvDrawer = findViewById(R.id.nav_menu)
-        // Setup drawer view
-        setupDrawerContent(nvDrawer)
+        appBarConfiguration = AppBarConfiguration.Builder(
+            R.id.startFragment, R.id.personalAreaFragment, R.id.aboutGymFragment, R.id.rulesFragment,)
+            .setOpenableLayout(drawerLayout).build()
+        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
+        NavigationUI.setupWithNavController(binding.navigationView, navController)
 
     }
 
-    private fun setupDrawerToggle(): ActionBarDrawerToggle {
-        return ActionBarDrawerToggle(
-            this,
-            mDrawer,
-            toolbar,
-            R.string.drawer_open,
-            R.string.drawer_close
-        )
+    override fun onSupportNavigateUp(): Boolean {
+
+        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp()
     }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return if (drawerToggle.onOptionsItemSelected(item)) {
-            true
-        } else super.onOptionsItemSelected(item)
-    }
-
-    private fun setupDrawerContent(navigationView: NavigationView) {
-        navigationView.setNavigationItemSelectedListener {
-
-            it.isChecked = true
-
-            if (currentUser != null) {
-                when (it.itemId){
-                R.id.home_item -> replaceFragment(StartFragment(), it.title.toString())
-                R.id.personal_area_item -> replaceFragment(PersonalAreaFragment(), it.title.toString())
-                R.id.rules_item -> replaceFragment(RulesFragment(), it.title.toString())
-                R.id.about_item -> replaceFragment(AboutGymFragment(), it.title.toString())
-                else -> {replaceFragment(StartFragment(), it.title.toString())}
-                }
-            } else {
-                when (it.itemId){
-                    R.id.home_item -> replaceFragment(StartFragment(), it.title.toString())
-                    R.id.personal_area_item -> replaceFragment(AuthFragment(), it.title.toString())
-                    R.id.rules_item -> replaceFragment(RulesFragment(), it.title.toString())
-                    R.id.about_item -> replaceFragment(AboutGymFragment(), it.title.toString())
-                    else -> {replaceFragment(StartFragment(), it.title.toString())}
-                }
-            }
-
-            true
-
-        }
-    }
-
-    private fun replaceFragment(fragment: Fragment, title: String): Boolean {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.nav_fragment, fragment)
-        fragmentTransaction.commit()
-        binding.drawerLayout.closeDrawers()
-        setTitle(title)
-        return true
-    }
-
 }

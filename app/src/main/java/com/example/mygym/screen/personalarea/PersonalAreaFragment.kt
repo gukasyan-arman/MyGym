@@ -19,7 +19,7 @@ class PersonalAreaFragment : Fragment() {
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     lateinit var binding: FragmentPersonalAreaBinding
-    private val currentUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+    private var currentUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
     private val userModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(

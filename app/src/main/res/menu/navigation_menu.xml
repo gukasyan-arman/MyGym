@@ -5,24 +5,30 @@
         android:id="@+id/group_main"
         android:checkableBehavior="single">
         <item
-            android:id="@+id/home_item"
+            android:id="@+id/startFragment"
             android:icon="@drawable/ic_baseline_home_24"
             android:title="@string/home_item_text"
             android:checked="true" />
         <item
-            android:id="@+id/personal_area_item"
+            android:id="@+id/personalAreaFragment"
             android:icon="@drawable/ic_baseline_login_24"
-            android:title="@string/personal_area_text" />
+            android:title="@string/personal_area_text"
+            android:visible="true"/>
         <item
-            android:id="@+id/team_item"
+            android:id="@+id/authFragment"
+            android:icon="@drawable/ic_baseline_login_24"
+            android:title="@string/personal_area_text"
+            android:visible="false"/>
+        <item
+            android:id="@+id/teamList"
             android:icon="@drawable/ic_account_group_outline"
             android:title="@string/team_item_text" />
         <item
-            android:id="@+id/about_item"
+            android:id="@+id/aboutGymFragment"
             android:icon="@drawable/ic_baseline_location_on_24"
             android:title="@string/abot_gym_item_text" />
         <item
-            android:id="@+id/rules_item"
+            android:id="@+id/rulesFragment"
             android:icon="@drawable/ic_baseline_rule_24"
             android:title="@string/rules_item_text" />
     </group>
@@ -31,11 +37,11 @@
         android:id="@+id/group_second"
         android:checkableBehavior="single">
         <item
-            android:id="@+id/about_app_item"
+            android:id="@+id/aboutApp"
             android:icon="@drawable/ic_baseline_info_24"
             android:title="@string/about_app_item_text" />
         <item
-            android:id="@+id/feedback_item"
+            android:id="@+id/feedback"
             android:icon="@drawable/ic_baseline_feedback_24"
             android:title="@string/feedback_item_text" />
     </group>

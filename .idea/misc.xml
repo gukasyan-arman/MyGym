@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/button.xml" value="0.16597222222222222" />
         <entry key="app/src/main/res/drawable/ic_account_group_outline.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_share_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_stars_24.xml" value="0.1" />
@@ -17,7 +18,7 @@
         <entry key="app/src/main/res/drawable/ic_phone.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_vk_svgrepo_com.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/insta_btn.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.14213197969543148" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_about_gym.xml" value="0.18" />
