@@ -28,19 +28,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal"
-                tools:ignore="TouchTargetSizeCheck">
+                android:paddingVertical="4dp"
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/ic_phone" />
+                    android:background="@drawable/ic_phone"
+                    android:contentDescription="@string/phone" />
 
                 <TextView
                     android:id="@+id/phoneTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="+79525727392"
+                    android:text="@string/my_phone_hint"
                     android:textColor="@color/white"
                     android:textSize="18sp"/>
 
@@ -48,8 +50,8 @@
 
             <View
                 android:layout_width="fill_parent"
-                android:layout_marginLeft="40dp"
-                android:layout_height="1dp"
+                android:layout_height="2dp"
+                android:layout_marginStart="40dp"
                 android:background="#ffffff" />
 
             <LinearLayout
@@ -57,19 +59,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal"
-                tools:ignore="TouchTargetSizeCheck">
+                android:paddingVertical="4dp"
+                tools:ignore="TouchTargetSizeCheck,UseCompoundDrawables">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/ic_baseline_person_24" />
+                    android:background="@drawable/ic_baseline_person_24"
+                    android:contentDescription="@string/desc_ic_person" />
 
                 <TextView
                     android:id="@+id/firstNameTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="firstNameTv"
+                    android:text="@string/firstnametv"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -77,8 +81,8 @@
 
             <View
                 android:layout_width="fill_parent"
-                android:layout_marginLeft="40dp"
-                android:layout_height="1dp"
+                android:layout_marginStart="40dp"
+                android:layout_height="2dp"
                 android:background="#ffffff" />
 
             <LinearLayout
@@ -86,13 +90,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal"
-                android:paddingLeft="40dp">
+                android:paddingVertical="4dp"
+                android:paddingStart="40dp"
+                tools:ignore="RtlSymmetry">
 
                 <TextView
                     android:id="@+id/lastNameTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="lastNameTv"
+                    android:text="@string/lastnametv"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -100,27 +106,30 @@
 
             <View
                 android:layout_width="fill_parent"
-                android:layout_marginLeft="40dp"
-                android:layout_height="1dp"
+                android:layout_marginStart="40dp"
+                android:layout_height="2dp"
                 android:background="#ffffff" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingVertical="4dp"
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/ic_baseline_cake_24" />
+                    android:background="@drawable/ic_baseline_cake_24"
+                    android:contentDescription="@string/desc_ic_cake" />
 
                 <TextView
                     android:id="@+id/dayOfBirth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="19.01.2001"
+                    android:text="@string/date_birth_default"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -128,27 +137,29 @@
 
             <View
                 android:layout_width="fill_parent"
-                android:layout_marginLeft="40dp"
-                android:layout_height="1dp"
+                android:layout_marginStart="40dp"
+                android:layout_height="2dp"
                 android:background="#ffffff" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingVertical="4dp">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/ic_baseline_male_24" />
+                    android:background="@drawable/ic_baseline_male_24"
+                    android:contentDescription="@string/desc_ic_man" />
 
                 <TextView
                     android:id="@+id/sex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="мужчина"
+                    android:text="@string/man_text"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -156,14 +167,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:background="@drawable/ic_baseline_female_24" />
+                    android:background="@drawable/ic_baseline_female_24"
+                    android:contentDescription="@string/desc_ic_man" />
 
             </LinearLayout>
 
             <View
                 android:layout_width="fill_parent"
-                android:layout_marginLeft="40dp"
-                android:layout_height="1dp"
+                android:layout_marginStart="40dp"
+                android:layout_height="2dp"
                 android:background="#ffffff" />
 
         </LinearLayout>
@@ -175,7 +187,7 @@
             android:layout_marginTop="8dp"
             android:background="@color/dark_gray"
             android:paddingVertical="16dp"
-            android:text="Личные данные"
+            android:text="@string/personal_data"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="16sp"
@@ -190,7 +202,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="24dp"
-            android:text="Личный кабинет"
+            android:text="@string/personal_area"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24sp"
@@ -205,7 +217,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:background="@drawable/button"
-            android:text="logout"
+            android:text="@string/logout"
             android:textStyle="bold"
             android:backgroundTint="@color/sbd_red"
             app:layout_constraintBottom_toBottomOf="parent"

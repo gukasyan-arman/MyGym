@@ -2,10 +2,8 @@ package com.example.mygym.screen.personalarea
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.activityViewModels
@@ -36,6 +34,7 @@ class PersonalAreaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val currentUserNumber = currentUser?.phoneNumber
+        setHasOptionsMenu(true)
 
         binding.welcomeTv.text = "Добро пожаловать\n$currentUserNumber"
         binding.phoneTv.text = currentUserNumber
@@ -47,6 +46,22 @@ class PersonalAreaFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_personalAreaFragment_to_startFragment)
         }
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.editPersonalDataFragment -> {
+                Navigation.findNavController(view!!).navigate(R.id.action_personalAreaFragment_to_editPersonalDataFragment2)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.personal_area_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
 }

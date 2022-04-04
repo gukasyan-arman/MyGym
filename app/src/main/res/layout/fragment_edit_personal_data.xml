@@ -16,10 +16,10 @@
             android:id="@+id/updateFirstNameTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="48dp"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="8dp"
-            android:layout_marginRight="16dp"
-            android:hint="First name"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/first_name"
             android:textColorHint="@color/gray"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,10 +40,10 @@
             android:id="@+id/updateLastNameTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="48dp"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="8dp"
-            android:layout_marginRight="16dp"
-            android:hint="Last name"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/last_name"
             android:textColorHint="@color/gray"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,6 +59,133 @@
                 android:textColor="@color/white" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/updateDateTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/date_birth_default"
+            android:textColorHint="@color/gray"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/updateLastNameTextInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/updateDateTextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:textColor="@color/white" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/updateEmailTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/gym_email_hint"
+            android:textColorHint="@color/gray"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/updateDateTextInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/updateEmailTextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:textColor="@color/white" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/updateSexLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/updateEmailTextInputLayout">
+
+            <TextView
+                android:id="@+id/updateSexTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/choose_sex_text"
+                android:paddingStart="4dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/gray"
+                android:textSize="18sp"
+                app:errorEnabled="true"
+                tools:ignore="RtlSymmetry" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/black" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ic_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_baseline_person_24"
+            app:layout_constraintBottom_toBottomOf="@+id/updateFirstNameTextInputLayout"
+            app:layout_constraintEnd_toStartOf="@+id/updateFirstNameTextInputLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/updateFirstNameTextInputLayout"
+            android:contentDescription="@string/desc_ic_person" />
+
+        <ImageView
+            android:id="@+id/ic_cake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_baseline_cake_24"
+            app:layout_constraintBottom_toBottomOf="@+id/updateDateTextInputLayout"
+            app:layout_constraintEnd_toStartOf="@+id/updateDateTextInputLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/updateDateTextInputLayout"
+            android:contentDescription="@string/desc_ic_cake" />
+
+        <ImageView
+            android:id="@+id/ic_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_email_edit_outline"
+            app:layout_constraintBottom_toBottomOf="@+id/updateEmailTextInputLayout"
+            app:layout_constraintEnd_toStartOf="@+id/updateEmailTextInputLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/updateEmailTextInputLayout"
+            android:contentDescription="@string/desc_ic_email" />
+
+        <ImageView
+            android:id="@+id/ic_man"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_male_24"
+            app:layout_constraintBottom_toBottomOf="@+id/updateSexLinearLayout"
+            app:layout_constraintEnd_toStartOf="@+id/updateSexLinearLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/updateSexLinearLayout"
+            android:contentDescription="@string/desc_ic_man" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -39,5 +39,23 @@
     <string name="phone_hint">(900)–000 0000</string>
     <string name="otp_hint">123456</string>
     <string name="ru_region_phone_number">+7</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="date_birth_default">00.00.0000</string>
+    <string name="gym_email_hint">myGym@gmail.com</string>
+    <string name="choose_sex_text">укажите свой пол</string>
+    <string name="desc_ic_person">ic_person</string>
+    <string name="desc_ic_cake">day of birth</string>
+    <string name="desc_ic_email">email</string>
+    <string name="desc_ic_man">man</string>
+    <string name="edit">редактировать</string>
+    <string name="phone">phone</string>
+    <string name="my_phone_hint">+79525727392</string>
+    <string name="firstnametv">firstNameTv</string>
+    <string name="lastnametv">lastNameTv</string>
+    <string name="man_text">мужчина</string>
+    <string name="personal_data">Личные данные</string>
+    <string name="personal_area">Личный кабинет</string>
+    <string name="logout">logout</string>
 
 </resources>

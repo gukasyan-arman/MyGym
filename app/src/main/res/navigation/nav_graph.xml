@@ -60,6 +60,9 @@
         <action
             android:id="@+id/action_personalAreaFragment_to_startFragment"
             app:destination="@id/startFragment" />
+        <action
+            android:id="@+id/action_personalAreaFragment_to_editPersonalDataFragment2"
+            app:destination="@id/editPersonalDataFragment2" />
     </fragment>
 
     <action android:id="@+id/action_global_startFragment"
@@ -82,4 +85,9 @@
         android:name="com.example.mygym.screen.rules.RulesFragment"
         android:label="fragment_rules"
         tools:layout="@layout/fragment_rules" />
+    <fragment
+        android:id="@+id/editPersonalDataFragment2"
+        android:name="com.example.mygym.screen.personalarea.EditPersonalDataFragment"
+        android:label="fragment_edit_personal_data"
+        tools:layout="@layout/fragment_edit_personal_data" />
 </navigation>
