@@ -41,7 +41,7 @@
     <string name="ru_region_phone_number">+7</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
-    <string name="date_birth_default">00.00.0000</string>
+    <string name="date_birth_default">00/00/0000</string>
     <string name="gym_email_hint">myGym@gmail.com</string>
     <string name="choose_sex_text">укажите свой пол</string>
     <string name="desc_ic_person">ic_person</string>
@@ -57,5 +57,10 @@
     <string name="personal_data">Личные данные</string>
     <string name="personal_area">Личный кабинет</string>
     <string name="logout">logout</string>
+
+    <string-array name="choice_sex_items">
+        <item>Мужской</item>
+        <item>Женский</item>
+    </string-array>
 
 </resources>

@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.mygym.R
 import com.example.mygym.databinding.FragmentEditPersonalDataBinding
+import com.example.mygym.dialog.DatePickerFragment
 
 class EditPersonalDataFragment : Fragment() {
 
@@ -20,4 +20,25 @@ class EditPersonalDataFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.updateDateLinearLayout.setOnClickListener {
+
+            val datePickerFragment = DatePickerFragment()
+            val supportFragmentManager = requireActivity().supportFragmentManager
+
+            supportFragmentManager.setFragmentResultListener(
+                "REQUEST_KEY", viewLifecycleOwner
+            ) {
+                resultKey, bundle -> if (resultKey == "REQUEST_KEY") {
+                    val date = bundle.getString("SELECTED_DATE")
+                binding.updateDateTextView.text = date
+                }
+            }
+
+            datePickerFragment.show(supportFragmentManager, "DatePickerFragment")
+
+        }
+    }
 }
