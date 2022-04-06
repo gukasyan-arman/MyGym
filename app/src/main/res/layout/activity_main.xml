@@ -26,7 +26,8 @@
                 android:layout_height="?attr/actionBarSize"
                 app:title="@string/home_item_text"
                 android:backgroundTint="@color/main_deep_dark"
-                app:titleTextColor="@color/white"/>
+                app:titleTextColor="@color/white"
+                android:theme="@style/ToolbarColor"/>
 
         </com.google.android.material.appbar.AppBarLayout>
 

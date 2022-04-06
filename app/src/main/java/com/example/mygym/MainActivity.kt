@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.mygym.databinding.ActivityMainBinding
@@ -15,7 +16,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_about_gym.view.*
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,35 +34,44 @@ class MainActivity : AppCompatActivity() {
         val toolbar = binding.topAppBar
         setSupportActionBar(toolbar)
 
-        resetDrawer()
+//        resetDrawer()
 
         userViewModel.user.observe(this, {
             currentUser = it
-            resetDrawer()
+
+//            resetDrawer()
         })
 
 
-//        if (currentUser != null) {
-//            Toast.makeText(this, currentUser?.phoneNumber, Toast.LENGTH_LONG).show()
-//            binding.navigationView.menu.findItem(R.id.personalAreaFragment).isVisible = true
-//            binding.navigationView.menu.findItem(R.id.authFragment).isVisible = false
-//        } else {
-//            Toast.makeText(this, "Юзер не зареган", Toast.LENGTH_LONG).show()
-//            binding.navigationView.menu.findItem(R.id.personalAreaFragment).isVisible = false
-//            binding.navigationView.menu.findItem(R.id.authFragment).isVisible = true
-//        }
-//
-//        appBarConfiguration = AppBarConfiguration.Builder(
-//            R.id.startFragment,
-//            R.id.authFragment,
-//            R.id.personalAreaFragment,
-//            R.id.aboutGymFragment,
-//            R.id.rulesFragment,
-//        ).setOpenableLayout(drawerLayout).build()
-//
-//        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
-//        NavigationUI.setupWithNavController(binding.navigationView, navController)
+        if (currentUser != null) {
+            Toast.makeText(this, currentUser?.phoneNumber, Toast.LENGTH_LONG).show()
+            binding.navigationView.menu.findItem(R.id.personalAreaFragment).isVisible = true
+            binding.navigationView.menu.findItem(R.id.authFragment).isVisible = false
+            appBarConfiguration = AppBarConfiguration.Builder(
+                R.id.startFragment,
+                R.id.authFragment,
+                R.id.personalAreaFragment,
+                R.id.aboutGymFragment,
+                R.id.rulesFragment,
+            ).setOpenableLayout(drawerLayout).build()
+
+
+        } else {
+            Toast.makeText(this, "Юзер не зареган", Toast.LENGTH_LONG).show()
+            binding.navigationView.menu.findItem(R.id.personalAreaFragment).isVisible = false
+            binding.navigationView.menu.findItem(R.id.authFragment).isVisible = true
+            appBarConfiguration = AppBarConfiguration.Builder(
+                R.id.startFragment,
+                R.id.authFragment,
+                R.id.personalAreaFragment,
+                R.id.aboutGymFragment,
+                R.id.rulesFragment,
+            ).setOpenableLayout(drawerLayout).build()
+        }
+
+        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
+        NavigationUI.setupWithNavController(binding.navigationView, navController)
 
     }
 
@@ -71,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    fun resetDrawer() {
+    private fun resetDrawer() {
 
         val fragmentId = if (currentUser != null) {
             R.id.personalAreaFragment

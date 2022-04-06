@@ -1,9 +1,6 @@
 package com.example.mygym.screen.personalarea
 
-import android.annotation.SuppressLint
-import android.content.res.ColorStateList
 import android.os.Bundle
-import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,14 +11,15 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.mygym.R
 import com.example.mygym.databinding.FragmentAuthBinding
+import com.example.mygym.model.User
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
 import java.util.concurrent.TimeUnit
 
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class AuthFragment : Fragment() {
 
@@ -31,6 +29,9 @@ class AuthFragment : Fragment() {
     private lateinit var phoneNumber: String
     private val ruRegionNumber = "+7"
     private val userModel: UserViewModel by activityViewModels()
+
+    private lateinit var db: FirebaseDatabase
+    private lateinit var usersDbReference: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +45,8 @@ class AuthFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         auth = FirebaseAuth.getInstance()
+        db = FirebaseDatabase.getInstance()
+        usersDbReference = db.reference.child("users")
 
         binding.buttonGetCode.setOnClickListener {
             phoneNumber = binding.phoneEditText.text.toString().trim()
@@ -99,7 +102,8 @@ class AuthFragment : Fragment() {
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful){
                 Toast.makeText(requireContext(), "Login successful", Toast.LENGTH_SHORT).show()
-                userModel.user.value = FirebaseAuth.getInstance().currentUser
+                userModel.user.value = auth.currentUser
+
                 Navigation.findNavController(view!!).navigate(R.id.action_global_personalAreaFragment)
             }
         }
@@ -127,6 +131,20 @@ class AuthFragment : Fragment() {
             false
         }
 
+    }
+
+    private fun createUser(firebaseUser: FirebaseUser) {
+        val user = User(
+            firebaseUser.uid,
+            phoneNumber,
+            "",
+            "",
+            "",
+            "",
+            "",
+        )
+
+        usersDbReference.push().setValue(user)
     }
 
     private fun validateCode(code: String): Boolean {

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.setFragmentResult
+import com.example.mygym.R
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -20,7 +21,7 @@ class DatePickerFragment: DialogFragment(), DatePickerDialog.OnDateSetListener {
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
         //return new DatePickerDialog instance
-        return DatePickerDialog(requireActivity(), this, year, month, day)
+        return DatePickerDialog(requireActivity(), R.style.my_dialog_theme, this, year, month, day)
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
