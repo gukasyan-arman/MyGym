@@ -34,44 +34,14 @@ class MainActivity : AppCompatActivity() {
         val toolbar = binding.topAppBar
         setSupportActionBar(toolbar)
 
-//        resetDrawer()
+        resetDrawer(R.id.authFragment, R.id.personalAreaFragment)
 
         userViewModel.user.observe(this, {
             currentUser = it
 
-//            resetDrawer()
+            resetDrawer(R.id.authFragment, R.id.personalAreaFragment)
+
         })
-
-
-        if (currentUser != null) {
-            Toast.makeText(this, currentUser?.phoneNumber, Toast.LENGTH_LONG).show()
-            binding.navigationView.menu.findItem(R.id.personalAreaFragment).isVisible = true
-            binding.navigationView.menu.findItem(R.id.authFragment).isVisible = false
-            appBarConfiguration = AppBarConfiguration.Builder(
-                R.id.startFragment,
-                R.id.authFragment,
-                R.id.personalAreaFragment,
-                R.id.aboutGymFragment,
-                R.id.rulesFragment,
-            ).setOpenableLayout(drawerLayout).build()
-
-
-        } else {
-            Toast.makeText(this, "Юзер не зареган", Toast.LENGTH_LONG).show()
-            binding.navigationView.menu.findItem(R.id.personalAreaFragment).isVisible = false
-            binding.navigationView.menu.findItem(R.id.authFragment).isVisible = true
-            appBarConfiguration = AppBarConfiguration.Builder(
-                R.id.startFragment,
-                R.id.authFragment,
-                R.id.personalAreaFragment,
-                R.id.aboutGymFragment,
-                R.id.rulesFragment,
-            ).setOpenableLayout(drawerLayout).build()
-        }
-
-        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
-        NavigationUI.setupWithNavController(binding.navigationView, navController)
 
     }
 
@@ -80,19 +50,22 @@ class MainActivity : AppCompatActivity() {
         return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    private fun resetDrawer() {
+    private fun resetDrawer(authFragmentId: Int, personalAreaFragmentId: Int) {
 
-        val fragmentId = if (currentUser != null) {
-            R.id.personalAreaFragment
-            Log.d("fragmentId", "fragmentId: " + R.id.personalAreaFragment)
+        if (currentUser != null) {
+            Toast.makeText(this, currentUser?.phoneNumber, Toast.LENGTH_LONG).show()
+            binding.navigationView.menu.findItem(personalAreaFragmentId).isVisible = true
+            binding.navigationView.menu.findItem(authFragmentId).isVisible = false
         } else {
-            R.id.authFragment
-            Log.d("fragmentId", "fragmentId: " + R.id.authFragment)
+            Toast.makeText(this, "Юзер не зареган", Toast.LENGTH_LONG).show()
+            binding.navigationView.menu.findItem(personalAreaFragmentId).isVisible = false
+            binding.navigationView.menu.findItem(authFragmentId).isVisible = true
         }
 
         appBarConfiguration = AppBarConfiguration.Builder(
             R.id.startFragment,
-            fragmentId,
+            authFragmentId,
+            personalAreaFragmentId,
             R.id.aboutGymFragment,
             R.id.rulesFragment,
         ).setOpenableLayout(drawerLayout).build()
