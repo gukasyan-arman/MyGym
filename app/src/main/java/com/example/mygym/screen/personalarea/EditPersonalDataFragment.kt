@@ -1,10 +1,11 @@
 package com.example.mygym.screen.personalarea
 
 import android.os.Bundle
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.navigation.Navigation
+import com.example.mygym.R
 import com.example.mygym.databinding.FragmentEditPersonalDataBinding
 import com.example.mygym.dialog.DatePickerFragment
 
@@ -17,6 +18,7 @@ class EditPersonalDataFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentEditPersonalDataBinding.inflate(inflater, container, false)
+        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -40,5 +42,25 @@ class EditPersonalDataFragment : Fragment() {
             datePickerFragment.show(supportFragmentManager, "DatePickerFragment")
 
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.personalAreaFragment -> {
+                Toast.makeText(requireContext(), "Информация сохранена", Toast.LENGTH_SHORT).show()
+
+
+
+                Navigation.findNavController(view!!).navigate(R.id.action_editPersonalDataFragment2_to_personalAreaFragment)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.edit_personal_area_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 }

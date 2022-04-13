@@ -38,6 +38,7 @@
         <entry key="app/src/main/res/layout/gym_photos_pager_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/navigation_header.xml" value="0.15" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/edit_personal_area_menu.xml" value="0.15625" />
         <entry key="app/src/main/res/menu/navigation_menu.xml" value="0.15" />
         <entry key="app/src/main/res/menu/personal_area_menu.xml" value="0.2" />
       </map>

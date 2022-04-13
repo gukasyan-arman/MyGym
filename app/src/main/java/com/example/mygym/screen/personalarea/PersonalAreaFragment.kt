@@ -25,7 +25,7 @@ class PersonalAreaFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentPersonalAreaBinding.inflate(inflater, container, false)
-
+        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -34,7 +34,6 @@ class PersonalAreaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val currentUserNumber = currentUser?.phoneNumber
-        setHasOptionsMenu(true)
 
         binding.welcomeTv.text = "Добро пожаловать\n$currentUserNumber"
         binding.phoneTv.text = currentUserNumber
@@ -60,7 +59,7 @@ class PersonalAreaFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.personal_area_menu, menu);
+        inflater.inflate(R.menu.personal_area_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 

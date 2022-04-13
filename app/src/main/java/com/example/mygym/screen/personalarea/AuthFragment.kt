@@ -1,6 +1,7 @@
 package com.example.mygym.screen.personalarea
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,8 +19,7 @@ import java.util.concurrent.TimeUnit
 
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 class AuthFragment : Fragment() {
 
@@ -30,8 +30,8 @@ class AuthFragment : Fragment() {
     private val ruRegionNumber = "+7"
     private val userModel: UserViewModel by activityViewModels()
 
-    private lateinit var db: FirebaseDatabase
-    private lateinit var usersDbReference: DatabaseReference
+    private lateinit var database: DatabaseReference
+    private lateinit var usersDatabaseReference: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,8 +45,8 @@ class AuthFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         auth = FirebaseAuth.getInstance()
-        db = FirebaseDatabase.getInstance()
-        usersDbReference = db.reference.child("users")
+        database = FirebaseDatabase.getInstance().reference
+        usersDatabaseReference = FirebaseDatabase.getInstance().reference.child("users")
 
         binding.buttonGetCode.setOnClickListener {
             phoneNumber = binding.phoneEditText.text.toString().trim()
@@ -99,14 +99,42 @@ class AuthFragment : Fragment() {
 
     private fun signInByCredentials(credential: PhoneAuthCredential) {
         val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+        phoneNumber = binding.phoneEditText.text.toString().trim()
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful){
-                Toast.makeText(requireContext(), "Login successful", Toast.LENGTH_SHORT).show()
-                userModel.user.value = auth.currentUser
+                val user = auth.currentUser
+                userModel.user.value = user
 
-                Navigation.findNavController(view!!).navigate(R.id.action_global_personalAreaFragment)
+                usersDatabaseReference.get().addOnSuccessListener { snapshot ->
+                    if (!snapshot.hasChild(ruRegionNumber + phoneNumber)) {
+                        createUser(user)
+                        Toast.makeText(requireContext(), "Регистрация выполнена", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(requireContext(), "Вход выполнен", Toast.LENGTH_SHORT).show()
+                        Navigation.findNavController(view!!).navigate(R.id.action_authFragment_to_personalAreaFragment)
+                    }
+                }.addOnFailureListener{
+                    Log.e("firebase", "Error getting data", it)
+                }
             }
         }
+    }
+
+    private fun createUser(firebaseUser: FirebaseUser?) {
+        val user = User(
+            firebaseUser?.phoneNumber,
+//            firebaseUser?.uid,
+            phoneNumber,
+            "",
+            "",
+            "",
+            "",
+            "",
+        )
+
+        usersDatabaseReference.child(firebaseUser?.phoneNumber!!).setValue(user)
+//        usersDatabaseReference.push().setValue(user)
+        Navigation.findNavController(view!!).navigate(R.id.action_authFragment_to_editPersonalDataFragment2)
     }
 
     private fun validatePhone(phoneNumber: String): Boolean {
@@ -121,7 +149,6 @@ class AuthFragment : Fragment() {
                 binding.buttonVerify.isVisible = true
                 binding.otpTextInputLayout.isVisible = true
                 binding.buttonGetCode.text = "Получить код повторно"
-
                 sendVerificationCode(phoneNumber)
                 binding.phoneTextInputLayout.error = ""
                 true
@@ -131,20 +158,6 @@ class AuthFragment : Fragment() {
             false
         }
 
-    }
-
-    private fun createUser(firebaseUser: FirebaseUser) {
-        val user = User(
-            firebaseUser.uid,
-            phoneNumber,
-            "",
-            "",
-            "",
-            "",
-            "",
-        )
-
-        usersDbReference.push().setValue(user)
     }
 
     private fun validateCode(code: String): Boolean {

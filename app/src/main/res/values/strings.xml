@@ -49,6 +49,7 @@
     <string name="desc_ic_email">email</string>
     <string name="desc_ic_man">man</string>
     <string name="edit">редактировать</string>
+    <string name="save">сохранить</string>
     <string name="phone">phone</string>
     <string name="my_phone_hint">+79525727392</string>
     <string name="firstnametv">firstNameTv</string>
