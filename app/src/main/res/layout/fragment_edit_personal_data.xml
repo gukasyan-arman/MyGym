@@ -62,6 +62,7 @@
 
         <LinearLayout
             android:id="@+id/updateDateLinearLayout"
+            android:paddingStart="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
@@ -77,7 +78,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/date_birth_default"
-                android:paddingStart="4dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/gray"
                 android:textSize="18sp"
@@ -85,10 +85,21 @@
                 tools:ignore="RtlSymmetry"/>
 
             <View
+                android:id="@+id/lineUnderDate"
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="4dp"
                 android:background="@color/black" />
+
+            <TextView
+                android:layout_marginTop="8dp"
+                android:id="@+id/errorDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:text="Заполните дату рождения"
+                android:textColor="@color/sbd_red"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
@@ -118,6 +129,7 @@
 
         <LinearLayout
             android:id="@+id/updateSexLinearLayout"
+            android:paddingStart="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
@@ -133,7 +145,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/choose_sex_text"
-                android:paddingStart="4dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/gray"
                 android:textSize="18sp"
@@ -141,10 +152,21 @@
                 tools:ignore="RtlSymmetry"/>
 
             <View
+                android:id="@+id/lineUnderSex"
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="4dp"
                 android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/errorSex"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:text="Укажите пол"
+                android:textColor="@color/sbd_red"
+                android:visibility="gone"/>
 
         </LinearLayout>
 

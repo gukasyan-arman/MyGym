@@ -39,9 +39,10 @@ class PersonalAreaFragment : Fragment() {
         binding.phoneTv.text = currentUserNumber
 
         binding.logoutBtn.setOnClickListener {
-            auth.signOut()
             Toast.makeText(requireContext(), "Выход выполнен", Toast.LENGTH_LONG).show()
-            userModel.user.value = FirebaseAuth.getInstance().currentUser
+            auth.signOut()
+
+            userModel.user.value = auth.currentUser
             Navigation.findNavController(view).navigate(R.id.action_personalAreaFragment_to_startFragment)
         }
 

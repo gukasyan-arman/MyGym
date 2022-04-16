@@ -38,9 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         userViewModel.user.observe(this, {
             currentUser = it
-
             resetDrawer(R.id.authFragment, R.id.personalAreaFragment)
-
         })
 
     }
