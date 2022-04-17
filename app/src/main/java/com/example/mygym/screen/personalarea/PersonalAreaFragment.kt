@@ -5,19 +5,23 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.mygym.R
 import com.example.mygym.databinding.FragmentPersonalAreaBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import kotlinx.coroutines.runBlocking
 
 class PersonalAreaFragment : Fragment() {
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     lateinit var binding: FragmentPersonalAreaBinding
     private var currentUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+    private var databaseReference = FirebaseDatabase.getInstance().reference.child("users")
+    private var currentUserReference: DatabaseReference = databaseReference.child(currentUser!!.phoneNumber.toString())
     private val userModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -26,6 +30,17 @@ class PersonalAreaFragment : Fragment() {
     ): View {
         binding = FragmentPersonalAreaBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
+
+        runBlocking {
+            currentUserReference.get().addOnSuccessListener { snapshot ->
+                binding.firstNameTv.text = snapshot.child("firstName").value.toString()
+                binding.lastNameTv.text = snapshot.child("lastName").value.toString()
+                binding.dayOfBirth.text = snapshot.child("birthday").value.toString()
+                binding.mailTv.text = snapshot.child("mail").value.toString()
+                binding.sex.text = snapshot.child("gender").value.toString()
+            }
+        }
+
         return binding.root
     }
 

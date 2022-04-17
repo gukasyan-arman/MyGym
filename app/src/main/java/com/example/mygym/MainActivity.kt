@@ -2,9 +2,6 @@ package com.example.mygym
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.mygym.databinding.ActivityMainBinding
@@ -15,7 +12,6 @@ import com.example.mygym.screen.personalarea.UserViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_about_gym.view.*
 
 class MainActivity : AppCompatActivity() {
 

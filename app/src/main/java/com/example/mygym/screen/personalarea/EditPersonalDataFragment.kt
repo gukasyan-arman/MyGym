@@ -1,14 +1,12 @@
 package com.example.mygym.screen.personalarea
 
-import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import android.view.*
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.graphics.red
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
@@ -19,11 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlin.coroutines.coroutineContext
 
 class EditPersonalDataFragment : Fragment() {
 
@@ -46,22 +40,11 @@ class EditPersonalDataFragment : Fragment() {
 
         runBlocking {
             currentUserReference.get().addOnSuccessListener { snapshot ->
-
                     firstName = snapshot.child("firstName").value.toString()
-                    Log.d("editpersonaldata", "firstName = $firstName")
-
                     lastName = snapshot.child("lastName").value.toString()
-                    Log.d("editpersonaldata", "lastName = $lastName")
-
                     birthday = snapshot.child("birthday").value.toString()
-                    Log.d("editpersonaldata", "birthday = $birthday")
-
                     mail = snapshot.child("mail").value.toString()
-                    Log.d("editpersonaldata", "mail = $mail")
-
                     gender = snapshot.child("gender").value.toString()
-                    Log.d("editpersonaldata", "gender = $gender")
-
             }
         }
 
@@ -108,8 +91,10 @@ class EditPersonalDataFragment : Fragment() {
 
         }
 
-        binding.updateSexTextView.setOnClickListener {
-
+        binding.chooseGenderRadioGroup.setOnCheckedChangeListener { _, _ ->
+            val id: Int = binding.chooseGenderRadioGroup.checkedRadioButtonId
+            val rb: RadioButton = binding.chooseGenderRadioGroup.findViewById(id)
+            binding.updateSexTextView.text = rb.text.toString()
         }
     }
 
@@ -165,6 +150,8 @@ class EditPersonalDataFragment : Fragment() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 binding.lineUnderSex.setBackgroundColor(resources.getColor(R.color.black, null))
             }
+
+
 
             return true
         } else {

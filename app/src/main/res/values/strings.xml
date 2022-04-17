@@ -58,6 +58,12 @@
     <string name="personal_data">Личные данные</string>
     <string name="personal_area">Личный кабинет</string>
     <string name="logout">logout</string>
+    <string name="gender_man">Мужской</string>
+    <string name="gender_woman">Женский</string>
+    <string name="choose_gender_textView">Укажите свой пол</string>
+    <string name="close">Закрыть</string>
+    <string name="accept">Подтвердить</string>
+    <string name="mail_example">yourmail@gmail.com</string>
 
     <string-array name="choice_sex_items">
         <item>Мужской</item>

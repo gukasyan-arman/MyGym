@@ -123,7 +123,6 @@ class AuthFragment : Fragment() {
     private fun createUser(firebaseUser: FirebaseUser?) {
         val user = User(
             firebaseUser?.phoneNumber,
-//            firebaseUser?.uid,
             phoneNumber,
             "",
             "",
@@ -133,7 +132,6 @@ class AuthFragment : Fragment() {
         )
 
         usersDatabaseReference.child(firebaseUser?.phoneNumber!!).setValue(user)
-//        usersDatabaseReference.push().setValue(user)
         Navigation.findNavController(view!!).navigate(R.id.action_authFragment_to_editPersonalDataFragment2)
     }
 
