@@ -60,6 +60,7 @@ class MainActivity : AppCompatActivity() {
             R.id.startFragment,
             authFragmentId,
             personalAreaFragmentId,
+            R.id.teamFragment2,
             R.id.aboutGymFragment,
             R.id.rulesFragment,
         ).setOpenableLayout(drawerLayout).build()

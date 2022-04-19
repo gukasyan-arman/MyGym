@@ -27,7 +27,11 @@
         android:id="@+id/aboutGymFragment"
         android:name="com.example.mygym.screen.aboutgym.AboutGymFragment"
         android:label="fragment_about_gym"
-        tools:layout="@layout/fragment_about_gym" />
+        tools:layout="@layout/fragment_about_gym" >
+        <action
+            android:id="@+id/action_aboutGymFragment_to_teamFragment2"
+            app:destination="@id/teamFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/powerliftingFragment"
         android:name="com.example.mygym.screen.powerlifting.PowerliftingFragment"
@@ -97,4 +101,9 @@
             android:id="@+id/action_editPersonalDataFragment2_to_personalAreaFragment"
             app:destination="@id/personalAreaFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/teamFragment2"
+        android:name="com.example.mygym.screen.team.TeamFragment"
+        android:label="fragment_team"
+        tools:layout="@layout/fragment_team" />
 </navigation>

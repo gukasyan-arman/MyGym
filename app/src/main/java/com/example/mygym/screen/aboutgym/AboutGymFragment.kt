@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.Navigation
 import com.example.mygym.*
 import com.example.mygym.adapter.ViewPagerImageAdapter
 import com.example.mygym.databinding.FragmentAboutGymBinding
@@ -59,7 +60,7 @@ class AboutGymFragment : Fragment(), OnMapReadyCallback {
         }
 
         binding.teamLinearLayout.setOnClickListener {
-            Toast.makeText(requireContext(), "Инструкторы", Toast.LENGTH_SHORT).show()
+            Navigation.findNavController(it).navigate(R.id.action_aboutGymFragment_to_teamFragment2)
         }
 
         binding.tableLinearLayout.setOnClickListener {
