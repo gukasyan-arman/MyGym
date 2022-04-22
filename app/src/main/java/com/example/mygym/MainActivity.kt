@@ -1,7 +1,10 @@
 package com.example.mygym
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.mygym.databinding.ActivityMainBinding
@@ -11,7 +14,9 @@ import androidx.navigation.ui.NavigationUI
 import com.example.mygym.screen.personalarea.UserViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.runBlocking
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,16 +49,28 @@ class MainActivity : AppCompatActivity() {
         return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+    @SuppressLint("SetTextI18n", "ResourceAsColor")
     private fun resetDrawer(authFragmentId: Int, personalAreaFragmentId: Int) {
-
+        val header: View = navigationView.getHeaderView(0)
+        val titleTv: TextView = header.findViewById(R.id.header_title)
         if (currentUser != null) {
+            val currentUserReference = FirebaseDatabase.getInstance().reference.child("users")
+                .child(currentUser!!.phoneNumber.toString())
             Toast.makeText(this, currentUser?.phoneNumber, Toast.LENGTH_LONG).show()
             binding.navigationView.menu.findItem(personalAreaFragmentId).isVisible = true
             binding.navigationView.menu.findItem(authFragmentId).isVisible = false
+            runBlocking {
+                currentUserReference.get().addOnSuccessListener { snapshot ->
+                    val firstName = snapshot.child("firstName").value.toString()
+                    val lastName = snapshot.child("lastName").value.toString()
+                    titleTv.text = "Добро пожаловать,\n$firstName $lastName!"
+                }
+            }
         } else {
             Toast.makeText(this, "Юзер не зареган", Toast.LENGTH_LONG).show()
             binding.navigationView.menu.findItem(personalAreaFragmentId).isVisible = false
             binding.navigationView.menu.findItem(authFragmentId).isVisible = true
+            titleTv.text = "Добро пожаловать!"
         }
 
         appBarConfiguration = AppBarConfiguration.Builder(
