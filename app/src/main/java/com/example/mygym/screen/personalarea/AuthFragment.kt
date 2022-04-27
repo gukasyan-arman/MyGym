@@ -28,7 +28,7 @@ class AuthFragment : Fragment() {
     private var verificationId: String = ""
     private lateinit var phoneNumber: String
     private val ruRegionNumber = "+7"
-    private val userModel: UserViewModel by activityViewModels()
+    private val userViewModel: UserViewModel by activityViewModels()
 
     private lateinit var database: DatabaseReference
     private lateinit var usersDatabaseReference: DatabaseReference
@@ -103,7 +103,7 @@ class AuthFragment : Fragment() {
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful){
                 val user = auth.currentUser
-                userModel.user.value = user
+                userViewModel.user.value = user
 
                 usersDatabaseReference.get().addOnSuccessListener { snapshot ->
                     if (!snapshot.hasChild(ruRegionNumber + phoneNumber)) {

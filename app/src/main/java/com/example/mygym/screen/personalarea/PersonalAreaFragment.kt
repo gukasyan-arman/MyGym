@@ -22,7 +22,7 @@ class PersonalAreaFragment : Fragment() {
     private var currentUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
     private var databaseReference = FirebaseDatabase.getInstance().reference.child("users")
     private var currentUserReference: DatabaseReference = databaseReference.child(currentUser!!.phoneNumber.toString())
-    private val userModel: UserViewModel by activityViewModels()
+    private val userViewModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,7 +57,7 @@ class PersonalAreaFragment : Fragment() {
             Toast.makeText(requireContext(), "Выход выполнен", Toast.LENGTH_LONG).show()
             auth.signOut()
 
-            userModel.user.value = auth.currentUser
+            userViewModel.user.value = auth.currentUser
             Navigation.findNavController(view).navigate(R.id.action_personalAreaFragment_to_startFragment)
         }
 

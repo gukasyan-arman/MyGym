@@ -44,6 +44,7 @@ class CoachAdapter(private val coachList: ArrayList<Coach>): RecyclerView.Adapte
         init {
             itemView.setOnClickListener {
                 listener.onItemClick(adapterPosition)
+
             }
         }
     }

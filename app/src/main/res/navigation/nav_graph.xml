@@ -105,5 +105,14 @@
         android:id="@+id/teamFragment2"
         android:name="com.example.mygym.screen.team.TeamFragment"
         android:label="fragment_team"
-        tools:layout="@layout/fragment_team" />
+        tools:layout="@layout/fragment_team" >
+        <action
+            android:id="@+id/action_teamFragment2_to_coachFragment"
+            app:destination="@id/coachFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coachFragment"
+        android:name="com.example.mygym.screen.team.CoachFragment"
+        android:label="fragment_coach"
+        tools:layout="@layout/fragment_coach" />
 </navigation>

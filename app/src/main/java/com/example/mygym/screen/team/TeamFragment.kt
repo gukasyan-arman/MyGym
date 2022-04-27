@@ -7,17 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mygym.R
 import com.example.mygym.adapter.CoachAdapter
 import com.example.mygym.databinding.FragmentTeamBinding
 import com.example.mygym.model.Coach
+import com.example.mygym.screen.personalarea.UserViewModel
 import com.google.firebase.database.*
+import com.google.firebase.database.ktx.getValue
 
 class TeamFragment : Fragment() {
 
     private lateinit var binding: FragmentTeamBinding
-    private var dbReference: DatabaseReference = FirebaseDatabase.getInstance().getReference("TRAINER")
+    private var databaseReference = FirebaseDatabase.getInstance().reference
+    private var trainerReference: DatabaseReference = databaseReference.child("TRAINER")
     private lateinit var coachArrayList: ArrayList<Coach>
+    private val coachViewModel: CoachViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +46,7 @@ class TeamFragment : Fragment() {
     }
 
     private fun getCoachData() {
-        dbReference.addValueEventListener(object : ValueEventListener{
+        trainerReference.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 coachArrayList.clear()
                 if (snapshot.exists()) {
@@ -49,8 +58,28 @@ class TeamFragment : Fragment() {
                     binding.teamRv.adapter = adapter
                     adapter.setOnItemClickListener(object : CoachAdapter.onItemClickListener{
                         override fun onItemClick(position: Int) {
-                            Toast.makeText(requireContext(), "Click on element #$position",
-                            Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "trainer$position", Toast.LENGTH_SHORT).show()
+
+                            trainerReference.child("trainer$position").get().addOnSuccessListener {snapshot ->
+                                coachViewModel.coachId.value = snapshot.child("id").value.toString()
+                                Log.d("coachInfo", "id :" + snapshot.child("id").value.toString())
+
+                                coachViewModel.coachFirstName.value = snapshot.child("firstName").value.toString()
+                                Log.d("coachInfo", "firstName :" +  snapshot.child("firstName").value.toString())
+
+                                coachViewModel.coachLastName.value = snapshot.child("lastName").value.toString()
+                                Log.d("coachInfo", "lastName :" +  snapshot.child("lastName").value.toString())
+
+                                coachViewModel.coachPost.value = snapshot.child("post").value.toString()
+                                Log.d("coachInfo", "post :" +  snapshot.child("post").value.toString())
+
+                                coachViewModel.coachDescription.value = snapshot.child("description").value.toString()
+                                Log.d("coachInfo", "description :" +  snapshot.child("description").value.toString())
+
+                            }
+
+                            Navigation.findNavController(view!!).navigate(R.id.action_teamFragment2_to_coachFragment)
+
                         }
                     })
                 }
