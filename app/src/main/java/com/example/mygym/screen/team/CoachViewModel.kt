@@ -1,5 +1,6 @@
 package com.example.mygym.screen.team
 
+import android.graphics.Bitmap
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mygym.model.Coach
@@ -24,6 +25,10 @@ open class CoachViewModel: ViewModel() {
 
     val coachDescription: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
+    }
+
+    val coachPhoto: MutableLiveData<Bitmap> by lazy {
+        MutableLiveData<Bitmap>()
     }
 
     val fullName = "$coachFirstName $coachLastName"

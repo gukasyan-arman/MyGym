@@ -1,5 +1,6 @@
 package com.example.mygym.screen.team
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -19,6 +20,10 @@ import com.example.mygym.model.Coach
 import com.example.mygym.screen.personalarea.UserViewModel
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import kotlinx.coroutines.runBlocking
+import java.io.File
 
 class TeamFragment : Fragment() {
 
@@ -27,6 +32,7 @@ class TeamFragment : Fragment() {
     private var trainerReference: DatabaseReference = databaseReference.child("TRAINER")
     private lateinit var coachArrayList: ArrayList<Coach>
     private val coachViewModel: CoachViewModel by activityViewModels()
+    private lateinit var storageReference: StorageReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,7 +64,6 @@ class TeamFragment : Fragment() {
                     binding.teamRv.adapter = adapter
                     adapter.setOnItemClickListener(object : CoachAdapter.onItemClickListener{
                         override fun onItemClick(position: Int) {
-                            Toast.makeText(requireContext(), "trainer$position", Toast.LENGTH_SHORT).show()
 
                             trainerReference.child("trainer$position").get().addOnSuccessListener {snapshot ->
                                 coachViewModel.coachId.value = snapshot.child("id").value.toString()
