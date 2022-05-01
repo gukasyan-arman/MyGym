@@ -21,6 +21,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/coach_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_about_gym.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_boxing.xml" value="0.1" />

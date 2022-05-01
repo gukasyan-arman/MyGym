@@ -1,12 +1,18 @@
 package com.example.mygym.adapter
 
+import android.content.Context
+import android.graphics.BitmapFactory
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mygym.R
 import com.example.mygym.databinding.CoachItemBinding
 import com.example.mygym.model.Coach
+import com.google.firebase.storage.FirebaseStorage
+import java.io.File
 
 class CoachAdapter(private val coachList: ArrayList<Coach>): RecyclerView.Adapter<CoachAdapter.MyViewHolder>() {
 
@@ -31,6 +37,14 @@ class CoachAdapter(private val coachList: ArrayList<Coach>): RecyclerView.Adapte
         with(holder) {
             binding.coachFio.text = currentItem.fullName()
             binding.coachPost.text = currentItem.post
+            val storageReference = FirebaseStorage.getInstance().getReference("photo_of_coaches/trainerAvatar$adapterPosition.jpeg")
+            Log.d("avatar", "photo_of_coaches/trainerAvatar$adapterPosition.jpeg")
+
+            val localFile: File = File.createTempFile("coachAvatar", ".jpeg")
+            storageReference.getFile(localFile).addOnSuccessListener {
+                val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+                binding.coachAvatar.setImageBitmap(bitmap)
+            }
         }
     }
 

@@ -39,10 +39,12 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/coachAvatar"
+            app:civ_border_width="1dp"
+            app:civ_border_color="@color/white"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/ic_baseline_person_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

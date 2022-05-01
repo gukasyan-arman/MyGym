@@ -1,5 +1,6 @@
 package com.example.mygym
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 
 const val NUMBER_OF_PAGER_ITEM = 3
