@@ -36,21 +36,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/startViewPager" />
 
             <Button
-                android:id="@+id/startFragmentTableButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/button"
-                android:text="@string/start_table_btn_text"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/indicator" />
-
-            <Button
                 android:id="@+id/startFragmentAboutButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -63,22 +48,22 @@
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toBottomOf="@+id/startFragmentTableButton" />
+                app:layout_constraintTop_toBottomOf="@+id/indicator" />
 
             <Button
-                android:id="@+id/startFragmentJoinButton"
+                android:id="@+id/tableFragmentTableButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/button"
-                android:text="@string/start_join_btn_text"
+                android:text="@string/start_table_btn_text"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/startFragmentTableButton" />
+                app:layout_constraintTop_toBottomOf="@+id/indicator" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline2"

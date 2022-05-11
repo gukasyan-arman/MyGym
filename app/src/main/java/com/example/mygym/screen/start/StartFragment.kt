@@ -44,12 +44,8 @@ class StartFragment : Fragment() {
             Navigation.findNavController(it).navigate(R.id.action_startFragment_to_aboutGymFragment)
         }
 
-        binding.startFragmentJoinButton.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_startFragment_to_aboutGymFragment)
-        }
-
-        binding.startFragmentTableButton.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_startFragment_to_aboutGymFragment)
+        binding.tableFragmentTableButton.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_startFragment_to_timetableFragment)
         }
 
     }

@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_startFragment_to_aboutGymFragment"
             app:destination="@id/aboutGymFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_timetableFragment"
+            app:destination="@id/timetableFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutGymFragment"
@@ -115,4 +118,18 @@
         android:name="com.example.mygym.screen.team.CoachFragment"
         android:label="fragment_coach"
         tools:layout="@layout/fragment_coach" />
+    <fragment
+        android:id="@+id/timetableFragment"
+        android:name="com.example.mygym.screen.timetable.TimetableFragment"
+        android:label="fragment_timetable"
+        tools:layout="@layout/fragment_timetable" >
+        <action
+            android:id="@+id/action_timetableFragment_to_sportFragment"
+            app:destination="@id/sportFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sportFragment"
+        android:name="com.example.mygym.screen.timetable.SportFragment"
+        android:label="fragment_sport"
+        tools:layout="@layout/fragment_sport" />
 </navigation>
