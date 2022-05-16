@@ -47,10 +47,10 @@ class BoxingFragment : Fragment() {
         for (i in 1..5) {
             when (i) {
                 1 -> addToList(R.drawable.boxing)
-                2 -> addToList(R.drawable.boxing)
-                3 -> addToList(R.drawable.boxing)
-                4 -> addToList(R.drawable.boxing)
-                5 -> addToList(R.drawable.boxing)
+                2 -> addToList(R.drawable.boxing1)
+                3 -> addToList(R.drawable.boxing2)
+                4 -> addToList(R.drawable.boxing3)
+                5 -> addToList(R.drawable.boxing4)
             }
         }
     }

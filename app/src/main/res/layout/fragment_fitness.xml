@@ -41,7 +41,7 @@
                 android:id="@+id/fitnessFragTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:paddingHorizontal="8dp"
                 android:text="@string/about_fitness"
                 android:textColor="@color/white"

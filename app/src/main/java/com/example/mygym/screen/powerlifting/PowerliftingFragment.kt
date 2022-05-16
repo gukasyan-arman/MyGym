@@ -46,10 +46,10 @@ class PowerliftingFragment : Fragment() {
 
         for (i in 1..5) {
             when (i) {
-                1 -> addToList(R.drawable.man_powerlift)
-                2 -> addToList(R.drawable.man_powerlift)
-                3 -> addToList(R.drawable.man_powerlift)
-                4 -> addToList(R.drawable.man_powerlift)
+                1 -> addToList(R.drawable.kinng67)
+                2 -> addToList(R.drawable.russel_orhii)
+                3 -> addToList(R.drawable.russel_orhii2)
+                4 -> addToList(R.drawable.russel_orhii3)
                 5 -> addToList(R.drawable.man_powerlift)
             }
         }

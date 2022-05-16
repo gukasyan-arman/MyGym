@@ -131,5 +131,9 @@
         android:id="@+id/sportFragment"
         android:name="com.example.mygym.screen.timetable.SportFragment"
         android:label="fragment_sport"
-        tools:layout="@layout/fragment_sport" />
+        tools:layout="@layout/fragment_sport" >
+        <action
+            android:id="@+id/action_sportFragment_to_authFragment"
+            app:destination="@id/authFragment" />
+    </fragment>
 </navigation>

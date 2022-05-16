@@ -46,10 +46,10 @@ class FitnessFragment : Fragment() {
 
         for (i in 1..5) {
             when (i) {
-                1 -> addToList(R.drawable.woman_fitness)
-                2 -> addToList(R.drawable.woman_fitness)
-                3 -> addToList(R.drawable.woman_fitness)
-                4 -> addToList(R.drawable.woman_fitness)
+                1 -> addToList(R.drawable.fitness1)
+                2 -> addToList(R.drawable.fitness2)
+                3 -> addToList(R.drawable.fitness3)
+                4 -> addToList(R.drawable.fitness4)
                 5 -> addToList(R.drawable.woman_fitness)
             }
         }
