@@ -78,6 +78,7 @@ class MainActivity : AppCompatActivity() {
             authFragmentId,
             personalAreaFragmentId,
             R.id.teamFragment2,
+            R.id.timetableFragment,
             R.id.aboutGymFragment,
             R.id.rulesFragment,
         ).setOpenableLayout(drawerLayout).build()

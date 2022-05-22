@@ -30,8 +30,6 @@ class SportFragment : Fragment() {
 
         initBaseScreen()
 
-
-
         return binding.root
     }
 

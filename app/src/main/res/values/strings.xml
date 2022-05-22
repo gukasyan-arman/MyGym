@@ -95,7 +95,7 @@
     <string name="accept">Подтвердить</string>
     <string name="mail_example">yourmail@gmail.com</string>
     <string name="choose_date_text">Выберите дату</string>
-    <string name="no_sports_tv">Нет занятий в выбранную дату.</string>
+    <string name="no_sports_tv">Выберите дату занятий</string>
 
     <string-array name="choice_sex_items">
         <item>Мужской</item>

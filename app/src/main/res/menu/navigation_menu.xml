@@ -18,6 +18,10 @@
             android:icon="@drawable/ic_baseline_login_24"
             android:title="@string/personal_area_text"/>
         <item
+            android:id="@+id/timetableFragment"
+            android:icon="@drawable/ic_baseline_format_list_bulleted_24"
+            android:title="@string/gym_table"/>
+        <item
             android:id="@+id/teamFragment2"
             android:icon="@drawable/ic_account_group_outline"
             android:title="@string/team_item_text" />

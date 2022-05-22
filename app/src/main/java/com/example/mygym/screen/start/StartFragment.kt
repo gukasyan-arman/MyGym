@@ -40,13 +40,13 @@ class StartFragment : Fragment() {
         val indicator: CircleIndicator3 = view.findViewById(R.id.indicator)
         indicator.setViewPager(startViewPager)
 
-        binding.startFragmentAboutButton.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_startFragment_to_aboutGymFragment)
-        }
-
-        binding.tableFragmentTableButton.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_startFragment_to_timetableFragment)
-        }
+//        binding.startFragmentAboutButton.setOnClickListener {
+//            Navigation.findNavController(it).navigate(R.id.action_startFragment_to_aboutGymFragment)
+//        }
+//
+//        binding.tableFragmentTableButton.setOnClickListener {
+//            Navigation.findNavController(it).navigate(R.id.action_startFragment_to_timetableFragment)
+//        }
 
     }
 
