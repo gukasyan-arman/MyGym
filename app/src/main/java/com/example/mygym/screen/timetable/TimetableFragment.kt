@@ -1,15 +1,12 @@
 package com.example.mygym.screen.timetable
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +15,6 @@ import com.example.mygym.adapter.SportAdapter
 import com.example.mygym.databinding.FragmentTimetableBinding
 import com.example.mygym.dialog.DatePickerFragment
 import com.example.mygym.model.Sport
-import com.example.mygym.screen.personalarea.UserViewModel
 import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -32,6 +28,7 @@ class TimetableFragment : Fragment() {
     private lateinit var sportArrayList: ArrayList<Sport>
     private val sportViewModel: SportViewModel by activityViewModels()
     private val dateViewModel: DateViewModel by activityViewModels()
+    private var date = SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).format(Calendar.getInstance().time).toString()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,31 +41,29 @@ class TimetableFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.dateBtn.text = date
+        sportArrayList = arrayListOf<Sport>()
+        binding.sportsRv.layoutManager = LinearLayoutManager(context)
+        getSports(date)
+
         binding.dateBtn.setOnClickListener {
             val datePickerFragment = DatePickerFragment()
             val supportFragmentManager = requireActivity().supportFragmentManager
 
             supportFragmentManager.setFragmentResultListener("REQUEST_KEY", viewLifecycleOwner) {
                 resultKey, bundle -> if (resultKey == "REQUEST_KEY") {
-                    val date = bundle.getString("SELECTED_DATE")
-                    binding.dateBtn.text = date
-                    dateViewModel.date.value = date
+                    date = bundle.getString("SELECTED_DATE").toString()
                 }
+                binding.dateBtn.text = date
+                dateViewModel.date.value = date
+                binding.sportsRv.layoutManager = LinearLayoutManager(context)
+                sportArrayList = arrayListOf<Sport>()
+                getSports(date)
             }
             datePickerFragment.show(supportFragmentManager, "DatePickerFragment")
+
+
         }
-
-        binding.sportsRv.layoutManager = LinearLayoutManager(context)
-        sportArrayList = arrayListOf<Sport>()
-        getSports(SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).format(Calendar.getInstance().time).toString())
-
-        dateViewModel.date.observe(this, {
-            sportArrayList = arrayListOf<Sport>()
-            getSports(dateViewModel.date.value.toString())
-        })
-
-//        Я остановился на том, что мне надо отследить изменения текста на кнопке, и, если в БД есть занятия
-//        с выбранноц датой, то вывести список этих занятий, если нет, то вывести соответствующее сообщение.
 
     }
 
@@ -87,7 +82,7 @@ class TimetableFragment : Fragment() {
                     adapter.setOnItemClickListener(object : SportAdapter.onItemClickListener{
                         override fun onItemClick(position: Int) {
 
-                            sportReference.child("sport$position").get().addOnSuccessListener {snapshot ->
+                            sportReference.child(date).child("sport$position").get().addOnSuccessListener {snapshot ->
                                 sportViewModel.sportTitle.value = snapshot.child("title").value.toString()
                                 Log.d("sportInfo", "title :" + snapshot.child("title").value.toString())
 
@@ -97,7 +92,7 @@ class TimetableFragment : Fragment() {
                                 sportViewModel.sportTime.value = snapshot.child("time").value.toString()
                                 Log.d("sportInfo", "time :" +  snapshot.child("time").value.toString())
 
-                                sportViewModel.sportDuration.value = snapshot.child("duration").value as Int?
+                                sportViewModel.sportDuration.value = snapshot.child("duration").value as Long?
                                 Log.d("sportInfo", "duration :" +  snapshot.child("duration").value.toString())
 
                                 sportViewModel.sportRoom.value = snapshot.child("room").value.toString()
@@ -106,10 +101,10 @@ class TimetableFragment : Fragment() {
                                 sportViewModel.sportTrainer.value = snapshot.child("trainer").value.toString()
                                 Log.d("sportInfo", "trainer :" +  snapshot.child("trainer").value.toString())
 
-                                sportViewModel.sportMembersCurrent.value = snapshot.child("membersCurrent").value as Int?
+                                sportViewModel.sportMembersCurrent.value = snapshot.child("membersCurrent").value as Long?
                                 Log.d("sportInfo", "membersCurrent :" +  snapshot.child("membersCurrent").value.toString())
 
-                                sportViewModel.sportMembersMax.value = snapshot.child("membersMax").value as Int?
+                                sportViewModel.sportMembersMax.value = snapshot.child("membersMax").value as Long?
                                 Log.d("sportInfo", "membersMax :" +  snapshot.child("membersMax").value.toString())
 
                             }
@@ -120,6 +115,7 @@ class TimetableFragment : Fragment() {
                     })
                 } else {
                     binding.noSportsTv.isVisible = true
+                    binding.sportsRv.isVisible = false
                 }
             }
 

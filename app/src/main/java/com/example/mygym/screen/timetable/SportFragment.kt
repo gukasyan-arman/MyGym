@@ -1,11 +1,13 @@
 package com.example.mygym.screen.timetable
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.mygym.R
 import com.example.mygym.databinding.FragmentSportBinding
@@ -21,6 +23,8 @@ class SportFragment : Fragment() {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     private var currentUser: FirebaseUser? = auth.currentUser
     private var databaseReference = FirebaseDatabase.getInstance().reference.child("users")
+    private val sportViewModel: SportViewModel by activityViewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +37,7 @@ class SportFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     private fun initBaseScreen() {
         if (currentUser != null) {
             binding.enroll.isVisible = true
@@ -46,10 +51,26 @@ class SportFragment : Fragment() {
                 Navigation.findNavController(it).navigate(R.id.action_sportFragment_to_authFragment)
             }
         }
-    }
 
-    private fun enroll() {
-        currentUser
+        binding.room.text = sportViewModel.sportRoom.value
+        binding.title.text = sportViewModel.sportTitle.value
+        if (sportViewModel.sportDuration.value!! < 60) {
+            binding.time.text = "Начало: ${sportViewModel.sportTime.value} (${sportViewModel.sportDuration.value} мин.)"
+        } else {
+            val hour = sportViewModel.sportDuration.value!! / 60
+            val min = sportViewModel.sportDuration.value!! - (hour * 60)
+
+            if (hour > 1) {
+                binding.time.text = "Начало: ${sportViewModel.sportTime.value} ($hour часа $min мин.)"
+            } else {
+                binding.time.text = "Начало: ${sportViewModel.sportTime.value} ($hour час $min мин.)"
+            }
+        }
+        binding.descriptionText.text = sportViewModel.sportDescription.value
+        binding.trainerTv.text = "Тренер ${sportViewModel.sportTrainer.value}"
+        val sportMembersCurrent = sportViewModel.sportMembersCurrent.value!!.toInt()
+        val sportMembersMax = sportViewModel.sportMembersMax.value!!.toInt()
+        binding.freePlaces.text = "Свободных мест: ${sportMembersMax - sportMembersCurrent} из $sportMembersMax"
     }
 
 }

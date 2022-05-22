@@ -25,16 +25,16 @@ class SportViewModel: ViewModel() {
         MutableLiveData<String>()
     }
 
-    val sportDuration: MutableLiveData<Int> by lazy {
-        MutableLiveData<Int>()
+    val sportDuration: MutableLiveData<Long> by lazy {
+        MutableLiveData<Long>()
     }
 
-    val sportMembersCurrent: MutableLiveData<Int> by lazy {
-        MutableLiveData<Int>()
+    val sportMembersCurrent: MutableLiveData<Long> by lazy {
+        MutableLiveData<Long>()
     }
 
-    val sportMembersMax: MutableLiveData<Int> by lazy {
-        MutableLiveData<Int>()
+    val sportMembersMax: MutableLiveData<Long> by lazy {
+        MutableLiveData<Long>()
     }
 
 }
