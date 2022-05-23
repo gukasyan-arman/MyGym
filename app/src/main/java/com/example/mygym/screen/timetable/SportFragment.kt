@@ -34,6 +34,10 @@ class SportFragment : Fragment() {
 
         initBaseScreen()
 
+        binding.enroll.setOnClickListener {
+            enroll()
+        }
+
         return binding.root
     }
 
@@ -70,7 +74,16 @@ class SportFragment : Fragment() {
         binding.trainerTv.text = "Тренер ${sportViewModel.sportTrainer.value}"
         val sportMembersCurrent = sportViewModel.sportMembersCurrent.value!!.toInt()
         val sportMembersMax = sportViewModel.sportMembersMax.value!!.toInt()
+        if (sportMembersCurrent == sportMembersMax) {
+            binding.enroll.text = "Свободных мест нет"
+            binding.enroll.isEnabled = false
+            binding.enroll.isClickable = false
+        }
         binding.freePlaces.text = "Свободных мест: ${sportMembersMax - sportMembersCurrent} из $sportMembersMax"
+    }
+
+    private fun enroll() {
+
     }
 
 }

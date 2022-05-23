@@ -3,6 +3,7 @@ package com.example.mygym
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -15,6 +16,8 @@ import com.example.mygym.screen.personalarea.UserViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.FirebaseMessagingService
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.runBlocking
 
@@ -42,6 +45,20 @@ class MainActivity : AppCompatActivity() {
             resetDrawer(R.id.authFragment, R.id.personalAreaFragment)
         })
 
+        sendPushMessage()
+
+    }
+
+    private fun sendPushMessage() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                return@addOnCompleteListener
+            }
+
+            val token = task.result
+            Log.e("token", "Token -> $token")
+
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -87,5 +104,7 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
         NavigationUI.setupWithNavController(binding.navigationView, navController)
     }
+
+
 
 }
