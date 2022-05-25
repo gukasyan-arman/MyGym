@@ -28,7 +28,7 @@ class TimetableFragment : Fragment() {
     private lateinit var sportArrayList: ArrayList<Sport>
     private val sportViewModel: SportViewModel by activityViewModels()
     private val dateViewModel: DateViewModel by activityViewModels()
-    private var date = SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).format(Calendar.getInstance().time).toString()
+    lateinit var date: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,11 +40,6 @@ class TimetableFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.dateBtn.text = date
-        sportArrayList = arrayListOf<Sport>()
-        binding.sportsRv.layoutManager = LinearLayoutManager(context)
-        getSports(date)
 
         binding.dateBtn.setOnClickListener {
             val datePickerFragment = DatePickerFragment()
