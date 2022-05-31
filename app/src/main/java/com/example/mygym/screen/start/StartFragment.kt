@@ -5,9 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI
-import com.example.mygym.MainActivity
 import com.example.mygym.NUMBER_OF_PAGER_ITEM
 import com.example.mygym.R
 import com.example.mygym.adapter.ViewPagerAdapter

@@ -1,12 +1,10 @@
 package com.example.mygym.adapter
 
-import android.content.Context
 import android.graphics.BitmapFactory
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mygym.R
 import com.example.mygym.databinding.CoachItemBinding

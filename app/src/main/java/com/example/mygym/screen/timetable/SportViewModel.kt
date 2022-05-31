@@ -37,4 +37,12 @@ class SportViewModel: ViewModel() {
         MutableLiveData<Long>()
     }
 
+    val date: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
+    val sportId: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
 }

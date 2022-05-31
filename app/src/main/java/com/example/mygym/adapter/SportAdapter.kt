@@ -1,18 +1,13 @@
 package com.example.mygym.adapter
 
 import android.annotation.SuppressLint
-import android.graphics.BitmapFactory
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mygym.R
-import com.example.mygym.databinding.CoachItemBinding
 import com.example.mygym.databinding.SportItemBinding
 import com.example.mygym.model.Sport
-import com.google.firebase.storage.FirebaseStorage
-import java.io.File
 
 class SportAdapter(private val sportList: ArrayList<Sport>): RecyclerView.Adapter<SportAdapter.MyViewHolder>() {
 

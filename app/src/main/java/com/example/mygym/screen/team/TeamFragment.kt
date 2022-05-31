@@ -1,29 +1,19 @@
 package com.example.mygym.screen.team
 
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mygym.R
 import com.example.mygym.adapter.CoachAdapter
 import com.example.mygym.databinding.FragmentTeamBinding
 import com.example.mygym.model.Coach
-import com.example.mygym.screen.personalarea.UserViewModel
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.getValue
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import kotlinx.coroutines.runBlocking
-import java.io.File
 
 class TeamFragment : Fragment() {
 
@@ -32,7 +22,6 @@ class TeamFragment : Fragment() {
     private var trainerReference: DatabaseReference = databaseReference.child("TRAINER")
     private lateinit var coachArrayList: ArrayList<Coach>
     private val coachViewModel: CoachViewModel by activityViewModels()
-    private lateinit var storageReference: StorageReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

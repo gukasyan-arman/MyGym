@@ -119,6 +119,16 @@
         если вещи не будут востребованы владельцем, вещи подлежат утилизации.
 
    \n7. При посещении туалетов раздевалок необходимо соблюдать общие санитарные и гигиенические требования.</string>
+    <string name="yoga">Yoga</string>
+    <string name="time_example">Начало: 10:00 (55 мин)</string>
+    <string name="room_example">studio1</string>
+    <string name="free_places_example">Свободных мест 26 из 26</string>
+    <string name="enroll">записаться</string>
+    <string name="unenroll">отписаться</string>
+    <string name="description_example">Описание занятия:</string>
+    <string name="treiner_example">Тренер: Иванов Иван</string>
+    <string name="auth_text_default">Для записи необходимо авторизироваться</string>
+    <string name="auth_btn_text">авторизироваться</string>
 
     <string-array name="choice_sex_items">
         <item>Мужской</item>

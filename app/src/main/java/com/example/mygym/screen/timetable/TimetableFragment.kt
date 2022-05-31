@@ -16,8 +16,6 @@ import com.example.mygym.databinding.FragmentTimetableBinding
 import com.example.mygym.dialog.DatePickerFragment
 import com.example.mygym.model.Sport
 import com.google.firebase.database.*
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.collections.ArrayList
 
 class TimetableFragment : Fragment() {
@@ -29,6 +27,7 @@ class TimetableFragment : Fragment() {
     private val sportViewModel: SportViewModel by activityViewModels()
     private val dateViewModel: DateViewModel by activityViewModels()
     lateinit var date: String
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -79,30 +78,36 @@ class TimetableFragment : Fragment() {
 
                             sportReference.child(date).child("sport$position").get().addOnSuccessListener {snapshot ->
                                 sportViewModel.sportTitle.value = snapshot.child("title").value.toString()
-                                Log.d("sportInfo", "title :" + snapshot.child("title").value.toString())
+                                Log.d("sportInfo", "title : " + snapshot.child("title").value.toString())
 
                                 sportViewModel.sportDescription.value = snapshot.child("description").value.toString()
-                                Log.d("sportInfo", "description :" +  snapshot.child("description").value.toString())
+                                Log.d("sportInfo", "description : " +  snapshot.child("description").value.toString())
 
                                 sportViewModel.sportTime.value = snapshot.child("time").value.toString()
-                                Log.d("sportInfo", "time :" +  snapshot.child("time").value.toString())
+                                Log.d("sportInfo", "time : " +  snapshot.child("time").value.toString())
 
                                 sportViewModel.sportDuration.value = snapshot.child("duration").value as Long?
-                                Log.d("sportInfo", "duration :" +  snapshot.child("duration").value.toString())
+                                Log.d("sportInfo", "duration : " +  snapshot.child("duration").value.toString())
 
                                 sportViewModel.sportRoom.value = snapshot.child("room").value.toString()
-                                Log.d("sportInfo", "room :" +  snapshot.child("room").value.toString())
+                                Log.d("sportInfo", "room : " +  snapshot.child("room").value.toString())
 
                                 sportViewModel.sportTrainer.value = snapshot.child("trainer").value.toString()
-                                Log.d("sportInfo", "trainer :" +  snapshot.child("trainer").value.toString())
+                                Log.d("sportInfo", "trainer : " +  snapshot.child("trainer").value.toString())
 
                                 sportViewModel.sportMembersCurrent.value = snapshot.child("membersCurrent").value as Long?
-                                Log.d("sportInfo", "membersCurrent :" +  snapshot.child("membersCurrent").value.toString())
+                                Log.d("sportInfo", "membersCurrent : " +  snapshot.child("membersCurrent").value.toString())
 
                                 sportViewModel.sportMembersMax.value = snapshot.child("membersMax").value as Long?
-                                Log.d("sportInfo", "membersMax :" +  snapshot.child("membersMax").value.toString())
+                                Log.d("sportInfo", "membersMax : " +  snapshot.child("membersMax").value.toString())
 
                             }
+
+                            sportViewModel.date.value = date
+                            Log.d("sportInfo", "date : $date")
+
+                            sportViewModel.sportId.value = "sport$position"
+                            Log.d("sportInfo", "sportId: sport$position")
 
                             Navigation.findNavController(view!!).navigate(R.id.action_timetableFragment_to_sportFragment)
 
